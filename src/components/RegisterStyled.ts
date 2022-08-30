@@ -13,6 +13,7 @@ const RegisterStyled = styled.div`
     &__label {
       font-size: 1.3 rem;
       padding: 0.5rem;
+      color: ${(props) => props.theme.primaryFont};
     }
 
     &__input {

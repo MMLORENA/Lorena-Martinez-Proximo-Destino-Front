@@ -1,19 +1,40 @@
+import { useState } from "react";
+import UserProto from "../../store/models/User";
 import RegisterStyled from "./RegisterStyled";
 
 const Register = () => {
+  const initialUser: UserProto = {
+    name: "",
+    firstName: "",
+    secondName: "",
+    userName: "",
+    password: "",
+    repeatedPassword: "",
+  };
+
+  const [registerData, setRegisterData] = useState(initialUser);
+
+  const handleChangeForm = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRegisterData({
+      ...registerData,
+      [event.target.id]: event.target.value,
+    });
+  };
   return (
     <>
       <RegisterStyled>
         <div className="container register-container">
           <form className="register-form">
             <div className="form-group">
-              <label className="form-group__label" htmlFor="nombre">
+              <label className="form-group__label" htmlFor="name">
                 Nombre
               </label>
               <input
                 type="text"
-                id="nombre"
+                id="name"
                 placeholder="¿Cómo te llamas?"
+                value={registerData.name}
+                onChange={handleChangeForm}
                 required
                 autoComplete="off"
                 className="form-group__input"
@@ -27,6 +48,8 @@ const Register = () => {
                 type="text"
                 id="firstName"
                 placeholder="1º Apellido"
+                value={registerData.firstName}
+                onChange={handleChangeForm}
                 required
                 autoComplete="off"
                 className="form-group__input"
@@ -40,18 +63,22 @@ const Register = () => {
                 type="text"
                 id="secondName"
                 placeholder="2º Apellido"
+                value={registerData.secondName}
+                onChange={handleChangeForm}
                 autoComplete="off"
                 className="form-group__input"
               />
             </div>
             <div className="form-group">
-              <label className="form-group__label" htmlFor="usuario">
+              <label className="form-group__label" htmlFor="userName">
                 Usuario
               </label>
               <input
                 type="text"
-                id="usuario"
+                id="userName"
                 placeholder="¿Tu nombre de usuario?"
+                value={registerData.userName}
+                onChange={handleChangeForm}
                 required
                 autoComplete="off"
                 className="form-group__input"
@@ -63,6 +90,8 @@ const Register = () => {
               </label>
               <input
                 type="password"
+                value={registerData.password}
+                onChange={handleChangeForm}
                 id="password"
                 placeholder="Escribe tu contraseña"
                 autoComplete="off"
@@ -70,13 +99,15 @@ const Register = () => {
               />
             </div>
             <div className="form-group">
-              <label className="form-group__label" htmlFor="repeteadPassword">
+              <label className="form-group__label" htmlFor="repeatedPassword">
                 Repite Contraseña
               </label>
               <input
                 type="password"
-                id="repeteadPassword"
+                id="repeatedPassword"
                 placeholder="Repite tu contraseña"
+                value={registerData.repeatedPassword}
+                onChange={handleChangeForm}
                 required
                 autoComplete="off"
                 className="form-group__input"

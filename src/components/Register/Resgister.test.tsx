@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Register from "./Register";
 
 describe("Given a Register component", () => {
   describe("When instantiated", () => {
-    test("Then it should show a form with Name,User,Password, First Name placeholders & a button inside", () => {
+    test("Then it should show a form with Name,User,Password, First Name placeholders & a button inside", async () => {
       const expectedUserText = "¿Tu nombre de usuario?";
       const expectedNameText = "¿Cómo te llamas?";
       const expectedfirstNameText = "1º Apellido";
@@ -36,13 +37,35 @@ describe("Given a Register component", () => {
       render(<Register />);
 
       const formTestLabels: Array<HTMLInputElement> = [
-        screen.getByLabelText(expectedUserText),
-        screen.getByLabelText(expectedNameText),
-        screen.getByLabelText(expectedPasswordText),
-        screen.getByLabelText(expectedfirstNameText),
+        screen.getByText(expectedUserText),
+        screen.getByText(expectedNameText),
+        screen.getByText(expectedPasswordText),
+        screen.getByText(expectedfirstNameText),
       ];
 
       formTestLabels.forEach((label) => expect(label).toBeInTheDocument());
+    });
+
+    test("Then it should update the input value to what the user entered", async () => {
+      const userName = "Mar";
+      const userPassword = "12345";
+      const userFirstName = "a";
+
+      render(<Register />);
+
+      const nameInput: HTMLInputElement = screen.getByLabelText("Usuario");
+      await userEvent.type(nameInput, userName);
+      expect(nameInput.value).toBe(userName);
+
+      const passwordInput: HTMLInputElement =
+        screen.getByLabelText("Contraseña");
+      await userEvent.type(passwordInput, userPassword);
+      expect(passwordInput.value).toBe(userPassword);
+
+      const userFirstNameInput: HTMLInputElement =
+        screen.getByLabelText("1º Apellido");
+      await userEvent.type(userFirstNameInput, userFirstName);
+      expect(userFirstNameInput.value).toBe(userFirstName);
     });
   });
 });

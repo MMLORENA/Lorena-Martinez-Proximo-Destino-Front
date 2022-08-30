@@ -4,6 +4,7 @@ const RegisterStyled = styled.div`
   margin: 20px;
   display: flex;
   justify-content: center;
+  gap: 20px;
 
   .form-group {
     display: flex;

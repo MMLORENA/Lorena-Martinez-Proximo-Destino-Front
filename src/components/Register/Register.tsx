@@ -82,6 +82,7 @@ const Register = () => {
                 className="form-group__input"
               />
             </div>
+            <button>Registrarme</button>
           </form>
         </div>
       </RegisterStyled>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UserProto from "../../store/models/User";
+import { UserProto } from "../../store/models/User";
 import RegisterStyled from "./RegisterStyled";
 
 const Register = () => {

@@ -12,6 +12,7 @@ describe("Given a component Button", () => {
           buttonText="volver"
           classNameTypeButton="small"
           actionOnclick={() => {}}
+          type="button"
         ></Button>
       );
 
@@ -32,6 +33,7 @@ describe("Given a component Button", () => {
           buttonText=""
           classNameTypeButton="small"
           actionOnclick={mockAction}
+          type="button"
         ></Button>
       );
 

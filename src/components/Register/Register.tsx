@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { UserProto } from "../../store/models/User";
+import useUser from "../../store/UserHook/useUser";
 import Button from "../Button/Button";
 import RegisterStyled from "./RegisterStyled";
 
 const Register = () => {
+  const { getRegister } = useUser();
+
   const initialUser: UserProto = {
     name: "",
     firstName: "",
@@ -21,11 +24,18 @@ const Register = () => {
       [event.target.id]: event.target.value,
     });
   };
+
+  const handleSubmit = async (event: SyntheticEvent) => {
+    event.preventDefault();
+    await getRegister(registerData);
+    setRegisterData(initialUser);
+  };
+
   return (
     <>
       <RegisterStyled>
         <div className="container register-container">
-          <form className="register-form">
+          <form className="register-form" onSubmit={handleSubmit} noValidate>
             <div className="form-group">
               <label className="form-group__label" htmlFor="name">
                 Nombre
@@ -118,6 +128,7 @@ const Register = () => {
               classNameTypeButton="small"
               actionOnclick={() => {}}
               buttonText="Registrarme"
+              type="submit"
             />
           </form>
         </div>

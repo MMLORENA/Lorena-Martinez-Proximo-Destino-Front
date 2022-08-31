@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { UserProto } from "../../store/models/User";
+import Button from "../Button/Button";
 import RegisterStyled from "./RegisterStyled";
 
 const Register = () => {
@@ -113,7 +114,11 @@ const Register = () => {
                 className="form-group__input"
               />
             </div>
-            <button>Registrarme</button>
+            <Button
+              classNameTypeButton="small"
+              actionOnclick={() => {}}
+              buttonText="Registrarme"
+            />
           </form>
         </div>
       </RegisterStyled>

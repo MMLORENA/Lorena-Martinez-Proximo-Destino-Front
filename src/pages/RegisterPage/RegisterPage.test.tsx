@@ -3,11 +3,11 @@ import RegisterPage from "./RegisterPage";
 
 describe("Given a RegistertPage component", () => {
   describe("When it's render", () => {
-    test("It should have a form  inside", () => {
+    test("It should show a 'Registro' heading", () => {
       render(<RegisterPage />);
-      const form = screen.getByText("Usuario");
+      const resultTitle = screen.getByText("Registro");
 
-      expect(form).toBeInTheDocument();
+      expect(resultTitle).toBeInTheDocument();
     });
   });
 });

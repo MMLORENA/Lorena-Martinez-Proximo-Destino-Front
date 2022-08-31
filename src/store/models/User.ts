@@ -1,4 +1,4 @@
-interface UserProto {
+export interface UserProto {
   name: string;
   firstName: string;
   secondName?: string;
@@ -7,4 +7,8 @@ interface UserProto {
   repeatedPassword: string;
 }
 
-export default UserProto;
+export interface User {
+  id: string;
+  token: string;
+  userName: string;
+}

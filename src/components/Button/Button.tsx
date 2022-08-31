@@ -5,12 +5,14 @@ interface ButtonProps {
   classNameTypeButton: "small" | "big";
   actionOnclick: () => void;
   type: "button" | "submit";
+  isDisabled: boolean;
 }
 const Button = ({
   buttonText,
   actionOnclick,
   classNameTypeButton,
   type,
+  isDisabled,
 }: ButtonProps): JSX.Element => {
   return (
     <ButtonStyled>
@@ -18,6 +20,7 @@ const Button = ({
         className={`button button--${classNameTypeButton}`}
         onClick={() => actionOnclick()}
         type={type}
+        disabled={isDisabled}
       >
         {buttonText}
       </button>

@@ -31,6 +31,15 @@ const Register = () => {
     setRegisterData(initialUser);
   };
 
+  const isSamePassword =
+    registerData.password === registerData.repeatedPassword;
+
+  const isFormValid = (): boolean =>
+    registerData.userName !== "" &&
+    registerData.name !== "" &&
+    registerData.firstName !== "" &&
+    registerData.password !== "" &&
+    isSamePassword;
   return (
     <>
       <RegisterStyled>
@@ -129,6 +138,7 @@ const Register = () => {
               actionOnclick={() => {}}
               buttonText="Registrarme"
               type="submit"
+              isDisabled={!isFormValid()}
             />
           </form>
         </div>

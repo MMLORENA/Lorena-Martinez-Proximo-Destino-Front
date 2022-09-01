@@ -30,7 +30,7 @@ describe("Given a function uiSlice", () => {
           modal: {
             isOpen: false,
             text: "",
-            type: "correct",
+            type: "loading",
           },
         };
 

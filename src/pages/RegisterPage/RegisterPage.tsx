@@ -7,9 +7,11 @@ const RegisterPage = (): JSX.Element => {
       <RegisterPageStyled className="title-container">
         <div className="image-container">
           <img
-            src="./images/register.png"
+            src="./images/registerMbl.webp"
             alt="estrellas Via Lactea"
             className="image"
+            height={250}
+            loading="eager"
           />
         </div>
         <div className="title-container">

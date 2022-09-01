@@ -14,8 +14,7 @@ const RegisterStyled = styled.div`
   }
 
   .image-container {
-    height: 250px;
-    width: 100vw;
+    min-width: 100vw;
   }
 
   .title-container {

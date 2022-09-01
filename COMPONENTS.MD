@@ -106,7 +106,7 @@
 ◾ MODIFICACIONEs:
 
 - Crear un destino.
-- Borrar un coktail.
+- Borrar un destino.
 - Modificar info destino.
 
 **_Usuarios_**

@@ -1,6 +1,6 @@
 import { SyntheticEvent, useState } from "react";
 import { UserProto } from "../../store/models/User";
-import useUser from "../../store/UserHook/useUser";
+import useUser from "../../store/hooks/useUser";
 import Button from "../Button/Button";
 import RegisterStyled from "./RegisterStyled";
 
@@ -55,7 +55,6 @@ const Register = () => {
                 placeholder="¿Cómo te llamas?"
                 value={registerData.name}
                 onChange={handleChangeForm}
-                required
                 autoComplete="off"
                 className="form-group__input"
               />
@@ -70,7 +69,6 @@ const Register = () => {
                 placeholder="1º Apellido"
                 value={registerData.firstName}
                 onChange={handleChangeForm}
-                required
                 autoComplete="off"
                 className="form-group__input"
               />
@@ -99,7 +97,6 @@ const Register = () => {
                 placeholder="¿Tu nombre de usuario?"
                 value={registerData.userName}
                 onChange={handleChangeForm}
-                required
                 autoComplete="off"
                 className="form-group__input"
               />
@@ -128,10 +125,10 @@ const Register = () => {
                 placeholder="Repite tu contraseña"
                 value={registerData.repeatedPassword}
                 onChange={handleChangeForm}
-                required
                 autoComplete="off"
                 className="form-group__input"
               />
+              <span>Tu contraseña</span>
             </div>
             <Button
               classNameTypeButton="small"

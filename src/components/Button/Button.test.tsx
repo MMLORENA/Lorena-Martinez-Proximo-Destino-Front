@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Button from "./Button";
+import { ThemeProvider } from "styled-components";
+import styledMainTheme from "../../styledMainTheme";
 
 describe("Given a component Button", () => {
   describe("When it receives a 'volver' text", () => {
@@ -30,13 +32,17 @@ describe("Given a component Button", () => {
       const mockAction = jest.fn();
 
       render(
-        <Button
-          buttonText=""
-          classNameTypeButton="small"
-          actionOnclick={mockAction}
-          type="button"
-          isDisabled={false}
-        ></Button>
+        <>
+          <ThemeProvider theme={styledMainTheme}>
+            <Button
+              buttonText=""
+              classNameTypeButton="small"
+              actionOnclick={mockAction}
+              type="button"
+              isDisabled={false}
+            ></Button>
+          </ThemeProvider>
+        </>
       );
 
       const button = screen.getByRole("button", { name: "" });

@@ -7,17 +7,32 @@ const ModalStyled = styled.div`
   justify-content: center;
   align-content: center;
   gap: 20px;
+  min-width: 300px;
+
+  @media (orientation: landscape) {
+    flex-direction: row;
+    gap: 40px;
+  }
 
   .modal-text {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: bold;
     color: ${(props) => props.theme.primaryColor};
     text-align: center;
+    white-space: nowrap;
+
+    @media (orientation: landscape) {
+      font-size: 3rem;
+    }
   }
 
   .svg-inline--fa {
     font-size: 7rem;
     color: ${(props) => props.theme.errorColor};
+
+    @media (orientation: landscape) {
+      font-size: 10rem;
+    }
   }
 `;
 

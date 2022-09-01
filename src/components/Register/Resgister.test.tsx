@@ -2,6 +2,12 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Register from "./Register";
 
+const mockRegister = jest.fn();
+
+jest.mock("../../store/hooks/useUser", () => () => ({
+  getRegister: mockRegister,
+}));
+
 describe("Given a Register component", () => {
   describe("When instantiated", () => {
     test("Then it should show a form with Name,User,Password, First Name placeholders & a button inside", async () => {
@@ -66,6 +72,37 @@ describe("Given a Register component", () => {
         screen.getByLabelText("1º Apellido");
       await userEvent.type(userFirstNameInput, userFirstName);
       expect(userFirstNameInput.value).toBe(userFirstName);
+    });
+  });
+
+  describe("And user types correctly in form and click on register button", () => {
+    test("Then it should complet the register correctly", async () => {
+      const userName = "MarZat";
+      const nameUser = "Mar";
+      const userPassword = "12345";
+      const userFirstName = "Zas";
+      const userRepeatPassword = "12345";
+
+      render(<Register />);
+
+      const button = screen.getByRole("button", {
+        name: "Registrarme",
+      });
+
+      const userNameInput = screen.getByLabelText("Usuario");
+      const firstNameInput = screen.getByLabelText("1º Apellido");
+      const nameInput = screen.getByLabelText("Nombre");
+      const passwordInput = screen.getByLabelText("Contraseña");
+      const passwordRepeatedInput = screen.getByLabelText("Repite Contraseña");
+
+      await userEvent.type(nameInput, nameUser);
+      await userEvent.type(firstNameInput, userFirstName);
+      await userEvent.type(userNameInput, userName);
+      await userEvent.type(passwordInput, userPassword);
+      await userEvent.type(passwordRepeatedInput, userRepeatPassword);
+      await userEvent.click(button);
+
+      expect(mockRegister).toHaveBeenCalled();
     });
   });
 });

@@ -29,6 +29,10 @@ const ButtonStyled = styled.div`
       background-color: ${(props) => props.theme.secondaryColor};
       border: none;
     }
+
+    &:disabled {
+      color: ${(props) => props.theme.thirdColor};
+    }
   }
 `;
 

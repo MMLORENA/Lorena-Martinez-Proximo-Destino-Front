@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { UserProto } from "../../store/models/User";
+import useUser from "../../store/hooks/useUser";
 import Button from "../Button/Button";
 import RegisterStyled from "./RegisterStyled";
 
 const Register = () => {
+  const { getRegister } = useUser();
+
   const initialUser: UserProto = {
     name: "",
     firstName: "",
@@ -21,11 +24,27 @@ const Register = () => {
       [event.target.id]: event.target.value,
     });
   };
+
+  const handleSubmit = async (event: SyntheticEvent) => {
+    event.preventDefault();
+    await getRegister(registerData);
+    setRegisterData(initialUser);
+  };
+
+  const isSamePassword =
+    registerData.password === registerData.repeatedPassword;
+
+  const isFormValid = (): boolean =>
+    registerData.userName !== "" &&
+    registerData.name !== "" &&
+    registerData.firstName !== "" &&
+    registerData.password !== "" &&
+    isSamePassword;
   return (
     <>
       <RegisterStyled>
         <div className="container register-container">
-          <form className="register-form">
+          <form className="register-form" onSubmit={handleSubmit} noValidate>
             <div className="form-group">
               <label className="form-group__label" htmlFor="name">
                 Nombre
@@ -36,7 +55,6 @@ const Register = () => {
                 placeholder="¿Cómo te llamas?"
                 value={registerData.name}
                 onChange={handleChangeForm}
-                required
                 autoComplete="off"
                 className="form-group__input"
               />
@@ -51,7 +69,6 @@ const Register = () => {
                 placeholder="1º Apellido"
                 value={registerData.firstName}
                 onChange={handleChangeForm}
-                required
                 autoComplete="off"
                 className="form-group__input"
               />
@@ -80,7 +97,6 @@ const Register = () => {
                 placeholder="¿Tu nombre de usuario?"
                 value={registerData.userName}
                 onChange={handleChangeForm}
-                required
                 autoComplete="off"
                 className="form-group__input"
               />
@@ -109,15 +125,17 @@ const Register = () => {
                 placeholder="Repite tu contraseña"
                 value={registerData.repeatedPassword}
                 onChange={handleChangeForm}
-                required
                 autoComplete="off"
                 className="form-group__input"
               />
+              <span>Tu contraseña</span>
             </div>
             <Button
               classNameTypeButton="small"
               actionOnclick={() => {}}
               buttonText="Registrarme"
+              type="submit"
+              isDisabled={!isFormValid()}
             />
           </form>
         </div>

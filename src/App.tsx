@@ -15,7 +15,7 @@ const App = () => {
   return (
     <ThemeProvider theme={styledMainTheme}>
       <AppStyled>
-        {isOpen && <Modal type={type} text={"hola"} />}
+        {isOpen && <Modal type={type} text={text} />}
         <Routes>
           <Route path="/" element={<Navigate to="/registro" />} />
           <Route path="/:registro" element={<RegisterPage />} />

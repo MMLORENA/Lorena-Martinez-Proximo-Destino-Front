@@ -7,7 +7,7 @@ export interface IUi {
 export interface Modal {
   isOpen: boolean;
   text: string;
-  type: "correct" | "error";
+  type: "loading" | "error";
 }
 
 export type TypeModal = Modal;

@@ -7,7 +7,7 @@ const uiInitialState: IUi = {
   modal: {
     isOpen: false,
     text: "",
-    type: "correct",
+    type: "loading",
   },
 };
 

@@ -12,9 +12,10 @@ const ModalStyled = styled.div`
   position: fixed;
   background-color: ${(props) => props.theme.forthColor};
 
-  @media (orientation: landscape) {
+  @media (min-width: 850px) {
     flex-direction: row;
     gap: 40px;
+    width: 100%;
   }
 
   .modal-text {

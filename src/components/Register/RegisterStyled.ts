@@ -29,6 +29,9 @@ const RegisterStyled = styled.form`
       font-size: 1.3 rem;
       padding: 0.5rem;
       color: ${(props) => props.theme.primaryFont};
+      @media (min-width: 850px) {
+        flex: 1;
+      }
     }
 
     &__input {
@@ -41,7 +44,7 @@ const RegisterStyled = styled.form`
       border-radius: 18px;
 
       @media (min-width: 850px) {
-        width: 50%;
+        flex: 2;
       }
     }
 

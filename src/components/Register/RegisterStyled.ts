@@ -50,6 +50,15 @@ const RegisterStyled = styled.form`
         align-self: flex-end;
       }
     }
+
+    &__input:focus {
+      font-family: Montserrat, sans-serif;
+      border-color: ${(props) => props.theme.secondaryColor};
+    }
+
+    .repeatedPassword:focus {
+      border-color: ${(props) => props.theme.errorColor};
+    }
   }
 `;
 

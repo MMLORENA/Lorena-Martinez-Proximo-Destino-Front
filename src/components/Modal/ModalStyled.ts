@@ -3,11 +3,14 @@ const ModalStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vh;
   height: 100vh;
   justify-content: center;
   align-content: center;
   gap: 20px;
   min-width: 300px;
+  position: fixed;
+  background-color: ${(props) => props.theme.forthColor};
 
   @media (orientation: landscape) {
     flex-direction: row;

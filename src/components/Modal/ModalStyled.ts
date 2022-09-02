@@ -19,23 +19,38 @@ const ModalStyled = styled.div`
   }
 
   .modal-text {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
     color: ${(props) => props.theme.primaryColor};
     text-align: center;
     white-space: nowrap;
 
-    @media (orientation: landscape) {
+    @media (min-width: 850px) {
       font-size: 3rem;
     }
   }
 
-  .svg-inline--fa {
+  .icon-plane {
     font-size: 7rem;
     color: ${(props) => props.theme.errorColor};
 
-    @media (orientation: landscape) {
+    @media (min-width: 850px) {
       font-size: 10rem;
+    }
+  }
+
+  .icon-cross {
+    font-size: 3rem;
+    color: ${(props) => props.theme.primaryColor};
+    position: absolute;
+    top: 75px;
+    right: 273px;
+
+    @media (min-width: 850px) {
+      font-size: 10rem;
+      top: 20px;
+      right: 40px;
+      font-size: 3rem;
     }
   }
 `;

@@ -6,6 +6,7 @@ import AppStyled from "./AppStyled";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import Modal from "./components/Modal/Modal";
 import { useAppSelector } from "./store/hooks";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 const App = () => {
   const {
@@ -17,8 +18,9 @@ const App = () => {
       <AppStyled>
         {isOpen && <Modal type={type} text={text} />}
         <Routes>
-          <Route path="/" element={<Navigate to="/registro" />} />
-          <Route path="/:registro" element={<RegisterPage />} />
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/registro" element={<RegisterPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AppStyled>
     </ThemeProvider>

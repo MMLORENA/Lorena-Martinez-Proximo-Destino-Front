@@ -8,6 +8,8 @@ const RegisterStyled = styled.div`
   width: 100%;
 
   @media (min-width: 850px) {
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
     height: 800px;
@@ -18,7 +20,7 @@ const RegisterStyled = styled.div`
     @media (min-width: 850px) {
       display: flex;
       flex-direction: column;
-      width: 50%;
+      flex: 1;
     }
   }
 
@@ -29,7 +31,6 @@ const RegisterStyled = styled.div`
     align-items: center;
 
     @media (min-width: 850px) {
-      width: 500px;
       align-content: flex-start;
       flex-direction: row;
       flex-wrap: wrap;
@@ -77,9 +78,9 @@ const RegisterStyled = styled.div`
 
     @media (min-width: 850px) {
       background-image: url("./images/registerDesk.webp");
-      width: 700px;
       height: 100%;
       border-radius: 0 64px 64px 0;
+      flex: 1.2;
     }
   }
 

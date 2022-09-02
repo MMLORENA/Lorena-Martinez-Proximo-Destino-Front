@@ -7,9 +7,8 @@ const RegisterStyled = styled.form`
   justify-content: center;
   gap: 20px;
 
-  @media (orientation: landscape) {
+  @media (min-width: 850px) {
     align-items: center;
-    width: 100%;
     margin: 20px 0;
   }
 
@@ -18,10 +17,10 @@ const RegisterStyled = styled.form`
     flex-direction: column;
     align-items: center;
 
-    @media (orientation: landscape) {
+    @media (min-width: 850px) {
       flex-direction: row;
       flex-wrap: nowrap;
-      width: 500px;
+      width: 80%;
       gap: 20px;
       justify-content: space-between;
     }
@@ -37,9 +36,19 @@ const RegisterStyled = styled.form`
       text-align: center;
       font-size: 1 rem;
       padding: 0.5 rem;
-      width: 300px;
+      width: 100%;
       height: 56px;
       border-radius: 18px;
+
+      @media (min-width: 850px) {
+        width: 50%;
+      }
+    }
+
+    .button {
+      @media (min-width: 850px) {
+        align-self: flex-end;
+      }
     }
   }
 `;

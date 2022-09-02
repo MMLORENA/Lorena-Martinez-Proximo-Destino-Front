@@ -6,11 +6,13 @@ const RegisterPage = (): JSX.Element => {
     <>
       <RegisterPageStyled>
         <div className="image-container"></div>
-        <div className="title-container">
-          <h1 className="main-title">Próximo Destino</h1>
-          <h2 className="section-title">Registro</h2>
+        <div className="form-group-container">
+          <div className="title-container">
+            <h1 className="main-title">Próximo Destino</h1>
+            <h2 className="section-title">Registro</h2>
+          </div>
+          <Register />
         </div>
-        <Register />
       </RegisterPageStyled>
     </>
   );

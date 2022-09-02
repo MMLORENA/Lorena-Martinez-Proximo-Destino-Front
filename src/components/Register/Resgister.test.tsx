@@ -138,6 +138,42 @@ describe("Given a Register component", () => {
 
       expect(mockRegister).toHaveBeenCalled();
     });
+
+    test("Then it shouldn't show an error message", async () => {
+      mockRegister = jest.fn().mockResolvedValue(true);
+      const userName = "MarZat";
+      const nameUser = "Mar";
+      const userPassword = "12345";
+      const userFirstName = "Zas";
+      const userRepeatPassword = "12345";
+
+      render(
+        <>
+          <Provider store={store}>
+            <Register />
+          </Provider>
+        </>
+      );
+
+      const button = screen.getByRole("button", {
+        name: "Registrarme",
+      });
+
+      const userNameInput = screen.getByLabelText("Usuario");
+      const firstNameInput = screen.getByLabelText("1º Apellido");
+      const nameInput = screen.getByLabelText("Nombre");
+      const passwordInput = screen.getByLabelText("Contraseña");
+      const passwordRepeatedInput = screen.getByLabelText("Repite Contraseña");
+
+      await userEvent.type(nameInput, nameUser);
+      await userEvent.type(firstNameInput, userFirstName);
+      await userEvent.type(userNameInput, userName);
+      await userEvent.type(passwordInput, userPassword);
+      await userEvent.type(passwordRepeatedInput, userRepeatPassword);
+      await userEvent.click(button);
+
+      expect(mockDispatch).not.toHaveBeenCalled();
+    });
   });
 
   describe("And the user types all the files but the register fails", () => {

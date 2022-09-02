@@ -1,11 +1,19 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Modal from "./Modal";
 
+const mockDispatch = jest.fn();
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: () => mockDispatch,
+}));
+
 describe("Given a Modal component", () => {
+  const modalType = "error";
+  const modalText = "Error";
+
   describe("When its instanciated", () => {
     describe("And receives a type error & 'Error' text", () => {
-      const modalType = "error";
-      const modalText = "Error";
       test("Then it should show 'Error' as text", () => {
         render(<Modal type={modalType} text={modalText}></Modal>);
 
@@ -22,6 +30,29 @@ describe("Given a Modal component", () => {
         const icon = screen.getByTestId(iconId);
 
         expect(icon).toBeInTheDocument();
+      });
+
+      test("Then it should show a cross to close the modal", () => {
+        const iconId = "icon-cross";
+
+        render(<Modal type={modalType} text={modalText}></Modal>);
+
+        const icon = screen.getByTestId(iconId);
+
+        expect(icon).toBeInTheDocument();
+      });
+    });
+
+    describe("And the user clicks on the cross", () => {
+      test("Then it should close the modal", async () => {
+        const iconId = "icon-cross";
+
+        render(<Modal type={modalType} text={modalText}></Modal>);
+
+        const icon = screen.getByTestId(iconId);
+        await userEvent.click(icon);
+
+        expect(mockDispatch).toHaveBeenCalled();
       });
     });
   });

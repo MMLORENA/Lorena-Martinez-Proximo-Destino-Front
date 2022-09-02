@@ -3,9 +3,14 @@ import { UserProto } from "../../store/models/User";
 import useUser from "../../store/hooks/useUser";
 import Button from "../Button/Button";
 import RegisterStyled from "./RegisterStyled";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { openModalActionCreator } from "../../store/reducer/uiSlice";
+import { Modal } from "../../store/interfaces/interfaces";
 
 const Register = () => {
   const { getRegister } = useUser();
+  const { modal } = useAppSelector((state) => state.ui);
+  const dispatch = useAppDispatch();
 
   const initialUser: UserProto = {
     name: "",
@@ -24,11 +29,21 @@ const Register = () => {
       [event.target.id]: event.target.value,
     });
   };
+  const modalError: Modal = {
+    ...modal,
+    isOpen: true,
+    text: "Error al registrate",
+    type: "error",
+  };
 
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
-    await getRegister(registerData);
-    setRegisterData(initialUser);
+    try {
+      await getRegister(registerData);
+      setRegisterData(initialUser);
+    } catch (error) {
+      dispatch(openModalActionCreator(modalError));
+    }
   };
 
   const isSamePassword =

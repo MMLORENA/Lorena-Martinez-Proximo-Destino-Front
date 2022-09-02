@@ -21,12 +21,10 @@ const Register = () => {
     repeatedPassword: "",
   };
 
-  const initialFeedback = true;
-
   const modalError: Modal = {
     ...modal,
     isOpen: true,
-    text: "Error al registrate",
+    text: "Error al registrarte",
     type: "error",
   };
 

@@ -21,6 +21,15 @@ const Register = () => {
     repeatedPassword: "",
   };
 
+  const initialFeedback = true;
+
+  const modalError: Modal = {
+    ...modal,
+    isOpen: true,
+    text: "Error al registrate",
+    type: "error",
+  };
+
   const [registerData, setRegisterData] = useState(initialUser);
 
   const handleChangeForm = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,19 +38,13 @@ const Register = () => {
       [event.target.id]: event.target.value,
     });
   };
-  const modalError: Modal = {
-    ...modal,
-    isOpen: true,
-    text: "Error al registrate",
-    type: "error",
-  };
 
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
-    try {
-      await getRegister(registerData);
-      setRegisterData(initialUser);
-    } catch (error) {
+    const isRegistered = await getRegister(registerData);
+    setRegisterData(initialUser);
+
+    if (!isRegistered) {
       dispatch(openModalActionCreator(modalError));
     }
   };
@@ -139,7 +142,7 @@ const Register = () => {
             value={registerData.repeatedPassword}
             onChange={handleChangeForm}
             autoComplete="off"
-            className="form-group__input"
+            className="form-group__input repeatedPassword"
           />
         </div>
         <Button

@@ -41,6 +41,15 @@ const RegisterStyled = styled.form`
       height: 56px;
       border-radius: 18px;
     }
+
+    &__input:focus {
+      font-family: Montserrat, sans-serif;
+      border-color: ${(props) => props.theme.secondaryColor};
+    }
+
+    .repeatedPassword:focus {
+      border-color: ${(props) => props.theme.errorColor};
+    }
   }
 `;
 

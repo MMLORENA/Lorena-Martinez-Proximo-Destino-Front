@@ -142,7 +142,7 @@ describe("Given a Register component", () => {
 
   describe("And the user types all the files but the register fails", () => {
     test("Then it should show an error message", async () => {
-      mockRegister = () => Promise.reject(new Error());
+      mockRegister = jest.fn().mockResolvedValue(false);
       const userName = "MarZat";
       const nameUser = "Mar";
       const userPassword = "12345";

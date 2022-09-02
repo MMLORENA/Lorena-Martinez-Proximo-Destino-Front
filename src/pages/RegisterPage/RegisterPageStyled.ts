@@ -5,12 +5,21 @@ const RegisterStyled = styled.div`
   flex-direction: column;
   align-items: center;
   min-width: 300px;
-  width: 100vw;
+  width: 100%;
 
-  @media (orientation: landscape) {
+  @media (min-width: 850px) {
     flex-wrap: wrap;
     align-content: flex-start;
     height: 800px;
+    gap: 20px;
+  }
+
+  .form-group-container {
+    @media (min-width: 850px) {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+    }
   }
 
   .title-container {
@@ -19,7 +28,7 @@ const RegisterStyled = styled.div`
     justify-content: center;
     align-items: center;
 
-    @media (orientation: landscape) {
+    @media (min-width: 850px) {
       width: 500px;
       align-content: flex-start;
       flex-direction: row;
@@ -37,7 +46,7 @@ const RegisterStyled = styled.div`
     padding: 10 px;
     margin: 0 auto;
 
-    @media (orientation: landscape) {
+    @media (min-width: 850px) {
       width: 100%;
       order: 2;
       padding: 0 80px;
@@ -50,14 +59,14 @@ const RegisterStyled = styled.div`
     padding: 10px;
     margin: 0 auto;
 
-    @media (orientation: landscape) {
+    @media (min-width: 850px) {
       width: 100%;
       order: 1;
     }
   }
 
   .image-container {
-    width: 100vw;
+    width: 100%;
     min-width: 200px;
     height: 250px;
     background-image: url("./images/registerMbl.webp");
@@ -66,9 +75,9 @@ const RegisterStyled = styled.div`
     background-size: cover;
     overflow: hidden;
 
-    @media (orientation: landscape) {
+    @media (min-width: 850px) {
       background-image: url("./images/registerDesk.webp");
-      width: 400px;
+      width: 700px;
       height: 100%;
       border-radius: 0 64px 64px 0;
     }

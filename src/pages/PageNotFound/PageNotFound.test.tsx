@@ -1,8 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import { render, renderHook, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../../store/store";
 import PageNotFound from "./PageNotFound";
-import { MemoryRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter, useLocation } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
 const mockNavigate = jest.fn().mockReturnThis();
@@ -47,6 +47,29 @@ describe("Given a PageNotFound component", () => {
       await userEvent.click(button);
 
       expect(mockNavigate).toHaveBeenCalled();
+    });
+
+    test("Then should change the page", async () => {
+      render(
+        <>
+          <Provider store={store}>
+            <MemoryRouter>
+              <PageNotFound />
+            </MemoryRouter>
+          </Provider>
+        </>
+      );
+
+      const button = screen.getByRole("button", { name: "Volver" });
+
+      await userEvent.click(button);
+
+      const {
+        result: {
+          current: { pathname },
+        },
+      } = renderHook(useLocation, { wrapper: BrowserRouter });
+      expect(pathname).toBe("/");
     });
   });
 });

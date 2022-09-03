@@ -16,7 +16,7 @@ const RegisterStyled = styled.div`
     gap: 20px;
   }
 
-  .form-group-container {
+  .form-section {
     @media (min-width: 850px) {
       display: flex;
       flex-direction: column;
@@ -24,7 +24,7 @@ const RegisterStyled = styled.div`
     }
   }
 
-  .title-container {
+  .form__title-container {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
@@ -40,7 +40,7 @@ const RegisterStyled = styled.div`
     }
   }
 
-  .main-title {
+  .form__main-title {
     font-weight: 100;
     font-size: 20px;
     align-self: center;
@@ -54,7 +54,7 @@ const RegisterStyled = styled.div`
     }
   }
 
-  .section-title {
+  .form__section-title {
     font-size: 1.3 rem;
     align-self: center;
     padding: 10px;
@@ -66,7 +66,7 @@ const RegisterStyled = styled.div`
     }
   }
 
-  .image-container {
+  .form__image {
     width: 100%;
     min-width: 200px;
     height: 250px;
@@ -84,8 +84,27 @@ const RegisterStyled = styled.div`
     }
   }
 
-  .logo {
-    width: 100%;
+  .link__container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-direction: column;
+    padding: 10px;
+
+    @media (min-width: 850px) {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme.secondaryColor};
+  }
+
+  .link__link {
+    font-size: 1rem;
+    font-weight: bold;
   }
 `;
 export default RegisterStyled;

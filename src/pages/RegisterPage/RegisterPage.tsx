@@ -7,7 +7,7 @@ const RegisterPage = (): JSX.Element => {
     <>
       <RegisterPageStyled className="register-page">
         <div className="form__image"></div>
-        <div className="form-section">
+        <section className="form-section">
           <div className="form__title-container">
             <h1 className="form__main-title">Próximo Destino</h1>
             <h2 className="form__section-title">Registro</h2>
@@ -19,7 +19,7 @@ const RegisterPage = (): JSX.Element => {
               <span className="link__link">Acceder</span>
             </Link>
           </section>
-        </div>
+        </section>
       </RegisterPageStyled>
     </>
   );

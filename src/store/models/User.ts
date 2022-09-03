@@ -12,3 +12,8 @@ export interface User {
   token: string;
   userName: string;
 }
+
+export interface ProtoUserLogin {
+  userName: string;
+  password: string;
+}

@@ -11,3 +11,8 @@ export interface Modal {
 }
 
 export type TypeModal = Modal;
+
+export interface UserState {
+  isLoged: boolean;
+  userName: string;
+}

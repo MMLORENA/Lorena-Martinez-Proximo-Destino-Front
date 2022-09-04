@@ -47,7 +47,7 @@ const useUser = () => {
       } = await responseData.json();
       const userLoged = decodeToken(token);
 
-      dispatch(loginUserActionCreator(userLoged));
+      dispatch(loginUserActionCreator(userLoged.userName));
       localStorage.setItem("token", JSON.stringify(token));
     } catch (error) {
       const modalError: Modal = {

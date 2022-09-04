@@ -8,6 +8,7 @@ import Modal from "./components/Modal/Modal";
 import { useAppSelector } from "./store/hooks";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import NavigationMenu from "./components/NavigationMenu/NavigationMenu";
 
 const App = () => {
   const {
@@ -17,6 +18,7 @@ const App = () => {
   return (
     <ThemeProvider theme={styledMainTheme}>
       <AppStyled>
+        <NavigationMenu />
         {isOpen && <Modal type={type} text={text} />}
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />

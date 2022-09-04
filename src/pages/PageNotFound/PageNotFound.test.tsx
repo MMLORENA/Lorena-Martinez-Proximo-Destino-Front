@@ -1,16 +1,15 @@
-import { render, renderHook, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../../store/store";
 import PageNotFound from "./PageNotFound";
-import { BrowserRouter, MemoryRouter, useLocation } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
+import * as router from "react-router";
+const mockNavigate = jest.fn();
 
-const mockNavigate = jest.fn().mockReturnThis();
-
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => mockNavigate,
-}));
+beforeEach(() => {
+  jest.spyOn(router, "useNavigate").mockImplementation(() => mockNavigate);
+});
 
 describe("Given a PageNotFound component", () => {
   describe("When it's render", () => {
@@ -64,12 +63,7 @@ describe("Given a PageNotFound component", () => {
 
       await userEvent.click(button);
 
-      const {
-        result: {
-          current: { pathname },
-        },
-      } = renderHook(useLocation, { wrapper: BrowserRouter });
-      expect(pathname).toBe("/");
+      expect(mockNavigate).toHaveBeenCalledWith("/login");
     });
   });
 });

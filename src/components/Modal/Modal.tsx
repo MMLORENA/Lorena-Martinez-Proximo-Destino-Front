@@ -16,19 +16,19 @@ const Modal = ({ text, type }: ModalProps) => {
   };
   return (
     <>
-      <ModalStyled>
+      <ModalStyled className="modal">
         <FontAwesomeIcon
           icon={faXmark}
-          className="icon-cross"
+          className="modal__icon-cross"
           data-testid="icon-cross"
           onClick={handleClose}
         />
         <FontAwesomeIcon
           icon={faPlaneSlash}
-          className="icon-plane"
+          className="modal__icon-plane"
           data-testid="icon-plane"
         />
-        <span className="modal-text">{text}</span>
+        <span className="modal__text">{text}</span>
       </ModalStyled>
     </>
   );

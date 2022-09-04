@@ -6,6 +6,7 @@ const RegisterStyled = styled.div`
   align-items: center;
   min-width: 300px;
   width: 100%;
+  padding-bottom: 80px;
 
   @media (min-width: 850px) {
     display: flex;

@@ -7,6 +7,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import Modal from "./components/Modal/Modal";
 import { useAppSelector } from "./store/hooks";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 const App = () => {
   const {
@@ -19,6 +20,7 @@ const App = () => {
         {isOpen && <Modal type={type} text={text} />}
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/registro" element={<RegisterPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

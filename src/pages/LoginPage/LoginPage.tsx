@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Login from "../../components/Login/Login";
+import Logo from "../../components/Logo/Logo";
 import LoginPageStyled from "./LoginPageStyled";
 
 const LoginPage = (): JSX.Element => {
@@ -9,7 +10,7 @@ const LoginPage = (): JSX.Element => {
         <div className="form__image"></div>
         <section className="form-section">
           <div className="form__title-container">
-            <h1 className="form__main-title">Próximo Destino</h1>
+            <Logo />
             <h2 className="form__section-title">Acceso a tu</h2>
           </div>
           <Login />

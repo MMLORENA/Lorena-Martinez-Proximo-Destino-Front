@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const RegisterStyled = styled.form`
-  margin: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

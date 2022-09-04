@@ -1,9 +1,15 @@
+import LogoStyled from "./LogoStyled";
+
 const Logo = () => {
   return (
     <>
-      <h1>
-        <img src="./images/logoMbl.webp" alt="logo próximo destino" />
-      </h1>
+      <LogoStyled>
+        <img
+          src="./images/logoMbl.webp"
+          alt="logo próximo destino"
+          className="logo__img"
+        />
+      </LogoStyled>
     </>
   );
 };

@@ -53,7 +53,7 @@ const useUser = () => {
       const modalError: Modal = {
         ...modal,
         isOpen: true,
-        text: "Usuario o Contraseña no válido",
+        text: "Usuario o Contraseña no válidos",
         type: "error",
       };
       dispatch(openModalActionCreator(modalError));

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Logo from "../../components/Logo/Logo";
 import Register from "../../components/Register/Register";
 import RegisterPageStyled from "./RegisterPageStyled";
 
@@ -9,7 +10,7 @@ const RegisterPage = (): JSX.Element => {
         <div className="form__image"></div>
         <section className="form-section">
           <div className="form__title-container">
-            <h1 className="form__main-title">Próximo Destino</h1>
+            <Logo />
             <h2 className="form__section-title">Registro</h2>
           </div>
           <Register />

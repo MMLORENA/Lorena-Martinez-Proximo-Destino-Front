@@ -1,11 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { render, renderHook, screen, waitFor } from "@testing-library/react";
 import Wrapper from "../../test-utils/Wrapper";
 import NavigationMenu from "./NavigationMenu";
 import * as router from "react-router";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { store } from "../../store/store";
 import userEvent from "@testing-library/user-event";
+import { useLocation } from "react-router-dom";
 
 const mockNavigate = jest.fn();
 
@@ -15,58 +16,123 @@ beforeEach(() => {
 
 describe("Given a NavigationMenu Component", () => {
   describe("When it's render", () => {
-    test("Then it should show a navigation menú", () => {
-      render(<NavigationMenu />, { wrapper: Wrapper });
+    describe("And the path is different from '/register' or '/login'", () => {
+      test("Then it should show a navigation menú", () => {
+        render(<NavigationMenu />, { wrapper: Wrapper });
 
-      const resultNav = screen.getByRole("navigation");
+        const resultNav = screen.getByRole("navigation");
 
-      expect(resultNav).toBeInTheDocument();
+        expect(resultNav).toBeInTheDocument();
+      });
+
+      test("Then it shoul show 'Destinos' & 'Logout' as text", async () => {
+        const expectTextDestinos = "Destinos";
+        const expectTextLogout = "Logout";
+
+        render(<NavigationMenu />, { wrapper: Wrapper });
+
+        const resultDestinos = screen.getByText(expectTextDestinos);
+        const resultLogout = screen.getByText(expectTextLogout);
+
+        expect(resultLogout).toHaveTextContent(expectTextLogout);
+        expect(resultDestinos).toHaveTextContent(expectTextDestinos);
+      });
+
+      test("Then it shoul show a house icon & a user icon inside", async () => {
+        const expectDestinos = "house__icon";
+        const expectLogout = "user__icon";
+
+        render(<NavigationMenu />, { wrapper: Wrapper });
+
+        const resultDestinos = screen.getByTestId(expectDestinos);
+        const resultLogout = screen.getByTestId(expectLogout);
+
+        expect(resultDestinos).toBeInTheDocument();
+        expect(resultLogout).toBeInTheDocument();
+      });
     });
 
-    test("Then it shoul show 'Destinos' & 'Logout' as text", async () => {
-      const expectTextDestinos = "Destinos";
-      const expectTextLogout = "Logout";
+    describe("And the user clicks on Destinos link", () => {
+      test("Then should change from page", async () => {
+        render(
+          <>
+            <Provider store={store}>
+              <BrowserRouter>
+                <NavigationMenu />
+              </BrowserRouter>
+            </Provider>
+          </>
+        );
 
-      render(<NavigationMenu />, { wrapper: Wrapper });
+        const linkDestinos = screen.getByRole("link", { name: "Logout" });
 
-      const resultDestinos = screen.getByText(expectTextDestinos);
-      const resultLogout = screen.getByText(expectTextLogout);
+        await userEvent.click(linkDestinos);
 
-      expect(resultLogout).toHaveTextContent(expectTextLogout);
-      expect(resultDestinos).toHaveTextContent(expectTextDestinos);
+        expect(mockNavigate).toHaveBeenCalled();
+      });
     });
 
-    test("Then it shoul show a house icon & a user icon inside", async () => {
-      const expectDestinos = "house__icon";
-      const expectLogout = "user__icon";
+    describe("And the pathname is '/destinos'", () => {
+      test("Then the pathname should be '/destinos'", async () => {
+        const mockLocation = {
+          pathname: "/destinos",
+          Location: "",
+          key: "",
+          search: "",
+          hash: "",
+          state: "",
+        };
 
-      render(<NavigationMenu />, { wrapper: Wrapper });
+        jest
+          .spyOn(router, "useLocation")
+          .mockImplementation(() => mockLocation);
 
-      const resultDestinos = screen.getByTestId(expectDestinos);
-      const resultLogout = screen.getByTestId(expectLogout);
+        const expectedPath = "/destinos";
+        render(
+          <MemoryRouter initialEntries={["/destinos"]}>
+            <NavigationMenu />
+          </MemoryRouter>
+        );
+        const linkDestinos = screen.getByRole("link", { name: "Destinos" });
+        await userEvent.click(linkDestinos);
 
-      expect(resultDestinos).toBeInTheDocument();
-      expect(resultLogout).toBeInTheDocument();
+        const {
+          result: {
+            current: { pathname },
+          },
+        } = renderHook(useLocation, { wrapper: MemoryRouter });
+
+        expect(pathname).toBe(expectedPath);
+      });
     });
-  });
 
-  describe("And the user clicks on Destinos link", () => {
-    test("Then should change to '/desino'", async () => {
-      render(
-        <>
-          <Provider store={store}>
-            <BrowserRouter>
-              <NavigationMenu />
-            </BrowserRouter>
-          </Provider>
-        </>
-      );
+    describe("And the pathname is '/registro'", () => {
+      test("Then NavigationMenú shouldn't render'", async () => {
+        const mockLocation = {
+          pathname: "/registro",
+          Location: "",
+          key: "",
+          search: "",
+          hash: "",
+          state: "",
+        };
 
-      const linkDestinos = screen.getByRole("link", { name: "Logout" });
+        jest
+          .spyOn(router, "useLocation")
+          .mockImplementation(() => mockLocation);
+        render(<NavigationMenu />, { wrapper: Wrapper });
 
-      await userEvent.click(linkDestinos);
+        const linkDestinos = screen.queryByRole("link", { name: "Destinos" });
 
-      expect(mockNavigate).toHaveBeenCalled();
+        const {
+          result: {
+            current: { pathname },
+          },
+        } = renderHook(useLocation, { wrapper: MemoryRouter });
+
+        expect(linkDestinos).not.toBeInTheDocument();
+        expect(pathname).toBe("/registro");
+      });
     });
   });
 });

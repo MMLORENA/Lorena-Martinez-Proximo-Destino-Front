@@ -35,6 +35,10 @@ const NavigationMenuStyled = styled.nav`
       flex-direction: column;
       align-items: center;
       gap: 5px;
+
+      &--active {
+        color: ${(props) => props.theme.secondaryColor};
+      }
     }
 
     &__text {

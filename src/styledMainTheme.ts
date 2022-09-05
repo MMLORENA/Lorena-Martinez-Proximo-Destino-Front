@@ -1,6 +1,6 @@
 const styledMainTheme = {
   primaryColor: "#302104",
-  secondaryColor: "#D48C00",
+  secondaryColor: "#A66908",
   thirdColor: "#979797",
   forthColor: "#ffffff",
   errorColor: "#BA1212",

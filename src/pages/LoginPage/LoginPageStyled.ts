@@ -6,14 +6,13 @@ const LoginStyled = styled.div`
   align-items: center;
   min-width: 300px;
   width: 100%;
-  padding-bottom: 80px;
 
   @media (min-width: 850px) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
-    height: 800px;
+    height: 100%;
     gap: 20px;
   }
 

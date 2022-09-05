@@ -5,9 +5,11 @@ const Logo = () => {
     <>
       <LogoStyled>
         <img
-          src="./images/logoMbl.webp"
+          src="./images/logo.png"
           alt="logo próximo destino"
           className="logo__img"
+          height={40}
+          width={280}
         />
       </LogoStyled>
     </>

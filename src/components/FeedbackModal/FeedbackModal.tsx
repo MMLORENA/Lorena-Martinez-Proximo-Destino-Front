@@ -7,7 +7,7 @@ import Logo from "../Logo/Logo";
 
 interface ModalProps {
   text: string;
-  type: "welcome" | "message";
+  type: string;
 }
 const FeedbackModal = ({ text, type }: ModalProps) => {
   const dispatch = useAppDispatch();

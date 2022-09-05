@@ -8,15 +8,20 @@ import Modal from "./components/Modal/Modal";
 import { useAppSelector } from "./store/hooks";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import FeedbackModal from "./components/FeedbackModal/FeedbackModal";
 
 const App = () => {
   const {
     modal: { isModalOpen, modalType, modalText },
+    feedback: { isFeedbackOpen, feedbackText, feedbackType },
   } = useAppSelector((state) => state.ui);
 
   return (
     <ThemeProvider theme={styledMainTheme}>
       <AppStyled>
+        {isFeedbackOpen && (
+          <FeedbackModal type={feedbackType} text={feedbackText} />
+        )}
         {isModalOpen && <Modal type={modalType} text={modalText} />}
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />

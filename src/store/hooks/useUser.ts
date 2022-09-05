@@ -1,7 +1,10 @@
 import { ProtoUserLogin, UserProto } from "../models/User";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import decodeToken from "../../utils/decodeToken";
-import { loginUserActionCreator } from "../reducer/userSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../reducer/userSlice";
 import {
   openFeedbackActionCreator,
   openModalActionCreator,
@@ -76,7 +79,12 @@ const useUser = () => {
     }
   };
 
-  return { getRegister, getLogin };
+  const getLogout = () => {
+    dispatch(logoutUserActionCreator());
+    localStorage.removeItem("token");
+  };
+
+  return { getRegister, getLogin, getLogout };
 };
 
 export default useUser;

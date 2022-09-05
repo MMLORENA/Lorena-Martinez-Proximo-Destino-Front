@@ -4,6 +4,7 @@ import FeedbackModalStyled from "./FeedbackStyled";
 import { useAppDispatch } from "../../store/hooks";
 import { closeFeedbackActionCreator } from "../../store/reducer/uiSlice";
 import Logo from "../Logo/Logo";
+import { useCallback, useEffect } from "react";
 
 interface ModalProps {
   text: string;
@@ -12,9 +13,19 @@ interface ModalProps {
 const FeedbackModal = ({ text, type }: ModalProps) => {
   const dispatch = useAppDispatch();
 
-  const handleClose = () => {
+  const handleCloseFeedback = useCallback(() => {
     dispatch(closeFeedbackActionCreator());
-  };
+  }, [dispatch]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleCloseFeedback();
+    }, 5000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [handleCloseFeedback]);
+
   return (
     <>
       <FeedbackModalStyled>
@@ -24,7 +35,7 @@ const FeedbackModal = ({ text, type }: ModalProps) => {
               icon={faCircleXmark}
               className="feedback__icon-cross"
               data-testid="icon-cross"
-              onClick={handleClose}
+              onClick={handleCloseFeedback}
             />
             <span className="feedback__text">¡Hola!</span>
             <span className="feedback__text">{text}</span>
@@ -36,7 +47,7 @@ const FeedbackModal = ({ text, type }: ModalProps) => {
               icon={faCircleXmark}
               className="feedback__icon-cross"
               data-testid="icon-cross"
-              onClick={handleClose}
+              onClick={handleCloseFeedback}
             />
             <span className="feedback__text">Tu</span>
             <Logo />

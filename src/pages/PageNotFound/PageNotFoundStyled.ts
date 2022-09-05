@@ -4,7 +4,6 @@ const PageNotFoundStyled = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 80px;
 
   @media (min-width: 850px) {
     display: flex;

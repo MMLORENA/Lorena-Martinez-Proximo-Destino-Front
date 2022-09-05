@@ -1,13 +1,24 @@
 export interface IUi {
-  isLoged: boolean;
-  isLoading: boolean;
   modal: TypeModal;
+  feedback: TypeFeedback;
 }
 
 export interface Modal {
-  isOpen: boolean;
-  text: string;
-  type: "loading" | "error";
+  isModalOpen: boolean;
+  modalText: string;
+  modalType: "loading" | "error";
+}
+
+export interface Feedback {
+  isFeedbackOpen: boolean;
+  feedbackText: string;
+  feedbackType: "welcome" | "message";
 }
 
 export type TypeModal = Modal;
+export type TypeFeedback = Feedback;
+
+export interface UserState {
+  isLoged: boolean;
+  userName: string;
+}

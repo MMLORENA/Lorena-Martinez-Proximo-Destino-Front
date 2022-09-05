@@ -3,8 +3,8 @@ const ModalStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vh;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-content: center;
   gap: 20px;
@@ -18,39 +18,40 @@ const ModalStyled = styled.div`
     width: 100%;
   }
 
-  .modal-text {
-    font-size: 2rem;
-    font-weight: bold;
-    color: ${(props) => props.theme.primaryColor};
-    text-align: center;
-    white-space: nowrap;
+  .modal {
+    &__text {
+      font-size: 2rem;
+      font-weight: bold;
+      color: ${(props) => props.theme.primaryColor};
+      text-align: center;
 
-    @media (min-width: 850px) {
+      @media (min-width: 850px) {
+        font-size: 3rem;
+      }
+    }
+    &__icon-plane {
+      font-size: 7rem;
+      color: ${(props) => props.theme.errorColor};
+
+      @media (min-width: 850px) {
+        font-size: 10rem;
+      }
+    }
+
+    &__icon-cross {
       font-size: 3rem;
-    }
-  }
-
-  .icon-plane {
-    font-size: 7rem;
-    color: ${(props) => props.theme.errorColor};
-
-    @media (min-width: 850px) {
-      font-size: 10rem;
-    }
-  }
-
-  .icon-cross {
-    font-size: 3rem;
-    color: ${(props) => props.theme.primaryColor};
-    position: absolute;
-    top: 75px;
-    right: 273px;
-
-    @media (min-width: 850px) {
-      font-size: 10rem;
+      color: ${(props) => props.theme.primaryColor};
+      position: absolute;
       top: 20px;
-      right: 40px;
-      font-size: 3rem;
+      right: 20px;
+
+      @media (min-width: 850px) {
+        font-size: 10rem;
+        top: 20px;
+        right: 40px;
+        font-size: 3rem;
+        cursor: pointer;
+      }
     }
   }
 `;

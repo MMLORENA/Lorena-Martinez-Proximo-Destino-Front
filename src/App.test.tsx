@@ -5,23 +5,26 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 
 const mockSelectorReturn = {
-  isLoged: false,
-  isLoading: false,
   modal: {
-    isOpen: true,
-    text: "Algo ha ido mal",
-    type: "error",
+    isModalOpen: true,
+    modalText: "Algo ha ido mal",
+    modalType: "error",
+  },
+  feedback: {
+    isFeedbackOpen: true,
+    feedbackText: "Mar",
+    feedbackType: "welcome",
   },
 };
 
-jest.mock("react-redux", () => ({
-  ...jest.requireActual("react-redux"),
-  useSelector: () => mockSelectorReturn,
+jest.mock("./store/hooks", () => ({
+  ...jest.requireActual("./store/hooks"),
+  useAppSelector: () => mockSelectorReturn,
 }));
 
 describe("Given an App component", () => {
-  describe("When isOpen is true", () => {
-    test("Then it should render the modal component", () => {
+  describe("When isModalOpen is true", () => {
+    test("Then it should render the modal component with a plane-icon inside", async () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -32,6 +35,23 @@ describe("Given an App component", () => {
       const modalText = screen.getByTestId("icon-plane");
 
       expect(modalText).toBeInTheDocument();
+    });
+  });
+
+  describe("When isFeedbackOpen is true", () => {
+    test("Then it should render the feedback component with a '¡Hola!' text inside", async () => {
+      const expectedSalutation = "¡Hola!";
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const feedbackSalutation = screen.getByText(expectedSalutation);
+
+      expect(feedbackSalutation).toHaveTextContent(expectedSalutation);
     });
   });
 });

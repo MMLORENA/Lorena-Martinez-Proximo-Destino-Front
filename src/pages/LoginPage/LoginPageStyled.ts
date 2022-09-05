@@ -32,8 +32,9 @@ const LoginStyled = styled.div`
     align-items: center;
 
     @media (min-width: 850px) {
+      display: flex;
       align-content: flex-start;
-      flex-direction: row;
+      flex-direction: column-reverse;
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 10px;

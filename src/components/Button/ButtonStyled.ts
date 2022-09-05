@@ -15,6 +15,10 @@ const ButtonStyled = styled.div`
     justify-content: center;
     border-radius: 21px;
 
+    @media (min-width: 850px) {
+      cursor: pointer;
+    }
+
     &--small {
       width: 11.25rem;
       height: 2.8rem;

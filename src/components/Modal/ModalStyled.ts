@@ -50,6 +50,7 @@ const ModalStyled = styled.div`
         top: 20px;
         right: 40px;
         font-size: 3rem;
+        cursor: pointer;
       }
     }
   }

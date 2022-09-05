@@ -11,6 +11,22 @@ const NavigationMenuStyled = styled.nav`
   bottom: 0;
   box-shadow: 2px 0 8px ${(props) => props.theme.primaryColor};
 
+  @media (min-width: 850px) {
+    top: 0;
+    height: 10%;
+    background-image: url("./images/logoMbl.webp");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: auto;
+
+    @media (min-width: 850px) {
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+      align-items: center;
+    }
+  }
+
   .navigation {
     &__link {
       text-decoration: none;
@@ -23,6 +39,16 @@ const NavigationMenuStyled = styled.nav`
 
     &__text {
       display: block;
+
+      @media (min-width: 850px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    &__icon {
+      @media (min-width: 850px) {
+        display: none;
+      }
     }
   }
 `;

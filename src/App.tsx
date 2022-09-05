@@ -8,11 +8,8 @@ import Modal from "./components/Modal/Modal";
 import { useAppSelector } from "./store/hooks";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import LoginPage from "./pages/LoginPage/LoginPage";
-<<<<<<< HEAD
 import NavigationMenu from "./components/NavigationMenu/NavigationMenu";
-=======
 import FeedbackModal from "./components/FeedbackModal/FeedbackModal";
->>>>>>> master
 
 const App = () => {
   const {
@@ -23,15 +20,11 @@ const App = () => {
   return (
     <ThemeProvider theme={styledMainTheme}>
       <AppStyled>
-<<<<<<< HEAD
         <NavigationMenu />
-        {isOpen && <Modal type={type} text={text} />}
-=======
         {isFeedbackOpen && (
           <FeedbackModal type={feedbackType} text={feedbackText} />
         )}
         {isModalOpen && <Modal type={modalType} text={modalText} />}
->>>>>>> master
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<LoginPage />} />

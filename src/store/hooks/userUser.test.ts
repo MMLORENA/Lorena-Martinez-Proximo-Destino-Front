@@ -81,7 +81,7 @@ describe("Given a function getLogin inside useUser hook", () => {
     password: "Admin",
   };
   describe("When it's invoke with a valid user", () => {
-    test("Then it should dispatch a user correctly loged adn call dispatch", async () => {
+    test("Then it should dispatch a user correctly loged and call dispatch with LoginUserActionCreator", async () => {
       const { result } = renderHook(useUser, { wrapper: Wrapper });
 
       await result.current.getLogin(mockUser);

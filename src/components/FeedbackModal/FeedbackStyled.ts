@@ -1,9 +1,7 @@
 import styled from "styled-components";
 const FeedbackModalStyled = styled.div`
-  width: 100vw;
-  height: 100vh;
-  min-height: 900px;
-  min-width: 300px;
+  width: 100%;
+  height: 100%;
   background-color: rgba(212, 140, 0, 0.8);
   position: absolute;
   display: flex;
@@ -14,8 +12,6 @@ const FeedbackModalStyled = styled.div`
   .feedback__container {
     background-color: ${(props) => props.theme.forthColor};
     border: 4px ${(props) => props.theme.correctColor} solid;
-    min-width: 18rem;
-    min-height: 16rem;
     border-radius: 20px;
     display: flex;
     justify-content: center;

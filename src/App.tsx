@@ -8,6 +8,7 @@ import Modal from "./components/Modal/Modal";
 import { useAppSelector } from "./store/hooks";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import NavigationMenu from "./components/NavigationMenu/NavigationMenu";
 import FeedbackModal from "./components/FeedbackModal/FeedbackModal";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
   return (
     <ThemeProvider theme={styledMainTheme}>
       <AppStyled>
+        <NavigationMenu />
         {isFeedbackOpen && (
           <FeedbackModal type={feedbackType} text={feedbackText} />
         )}

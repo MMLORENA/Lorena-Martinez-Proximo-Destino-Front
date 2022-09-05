@@ -6,6 +6,7 @@ const LoginStyled = styled.div`
   align-items: center;
   min-width: 300px;
   width: 100%;
+  padding-bottom: 80px;
 
   @media (min-width: 850px) {
     display: flex;
@@ -58,7 +59,7 @@ const LoginStyled = styled.div`
   .form__section-title {
     font-size: 1.3 rem;
     align-self: center;
-    padding: 10px;
+    padding: 5px;
     margin: 0 auto;
 
     @media (min-width: 850px) {
@@ -90,7 +91,6 @@ const LoginStyled = styled.div`
     align-items: center;
     gap: 5px;
     flex-direction: column;
-    padding: 10px;
 
     @media (min-width: 850px) {
       flex-direction: row;

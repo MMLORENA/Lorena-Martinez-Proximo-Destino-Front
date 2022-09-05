@@ -1,8 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { render, renderHook, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, useLocation, BrowserRouter } from "react-router-dom";
 import { store } from "../../store/store";
 import LoginPage from "./LoginPage";
+import * as router from "react-router";
+import userEvent from "@testing-library/user-event";
 
 describe("Given a LoginPage component", () => {
   describe("When it's render", () => {
@@ -51,6 +53,42 @@ describe("Given a LoginPage component", () => {
       const resultText = screen.getByRole("button", { name: expectedText });
 
       expect(resultText).toHaveTextContent(expectedText);
+    });
+  });
+
+  describe("And the user clicks on 'Registrate' link", () => {
+    test("Then should change the page '/registro'", async () => {
+      const mockLocation = {
+        pathname: "/registro",
+        Location: "",
+        key: "",
+        search: "",
+        hash: "",
+        state: "",
+      };
+
+      jest.spyOn(router, "useLocation").mockImplementation(() => mockLocation);
+
+      render(
+        <>
+          <Provider store={store}>
+            <MemoryRouter>
+              <LoginPage />
+            </MemoryRouter>
+          </Provider>
+        </>
+      );
+
+      const link = screen.getByRole("link", { name: "Registrate" });
+
+      await userEvent.click(link);
+
+      const {
+        result: {
+          current: { pathname },
+        },
+      } = renderHook(useLocation, { wrapper: BrowserRouter });
+      expect(pathname).toBe("/registro");
     });
   });
 });

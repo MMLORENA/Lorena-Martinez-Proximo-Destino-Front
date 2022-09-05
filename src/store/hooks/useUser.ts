@@ -2,13 +2,18 @@ import { ProtoUserLogin, UserProto } from "../models/User";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import decodeToken from "../../utils/decodeToken";
 import { loginUserActionCreator } from "../reducer/userSlice";
-import { openModalActionCreator } from "../reducer/uiSlice";
-import { Modal } from "../interfaces/interfaces";
+import {
+  openFeedbackActionCreator,
+  openModalActionCreator,
+} from "../reducer/uiSlice";
+import { Feedback, Modal } from "../interfaces/interfaces";
+import { useNavigate } from "react-router-dom";
 
 const useUser = () => {
   const url = process.env.REACT_APP_API_URL as string;
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { modal } = useAppSelector((state) => state.ui);
+  const { modal, feedback } = useAppSelector((state) => state.ui);
 
   const getRegister = async (newUser: UserProto) => {
     try {
@@ -49,6 +54,16 @@ const useUser = () => {
 
       dispatch(loginUserActionCreator(userLoged.userName));
       localStorage.setItem("token", JSON.stringify(token));
+
+      const feedbackLogin: Feedback = {
+        ...feedback,
+        isFeedbackOpen: true,
+        feedbackText: `${userLoged.userName}`,
+        feedbackType: "welcome",
+      };
+
+      dispatch(openFeedbackActionCreator(feedbackLogin));
+      navigate("/destinos");
     } catch (error) {
       const modalError: Modal = {
         ...modal,
@@ -56,6 +71,7 @@ const useUser = () => {
         modalText: "Usuario o Contraseña no válidos",
         modalType: "error",
       };
+
       dispatch(openModalActionCreator(modalError));
     }
   };

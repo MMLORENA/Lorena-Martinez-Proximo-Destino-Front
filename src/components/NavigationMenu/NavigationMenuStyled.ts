@@ -39,6 +39,10 @@ const NavigationMenuStyled = styled.nav`
       &--active {
         color: ${(props) => props.theme.secondaryColor};
       }
+
+      &:active {
+        color: ${(props) => props.theme.secondaryColor};
+      }
     }
 
     &__text {

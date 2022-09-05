@@ -2,22 +2,28 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faUser } from "@fortawesome/free-solid-svg-icons";
 import NavigationMenuStyled from "./NavigationMenuStyled";
 import { NavLink, useLocation } from "react-router-dom";
+import useUser from "../../store/hooks/useUser";
 
 const NavigationMenu = () => {
   const { pathname } = useLocation();
+  const { getLogout } = useUser();
 
-  const noVisible = pathname === "/login" || pathname === "/registro";
+  const isVisible = pathname === "/destinos" || pathname === "/destino";
   const isActive = pathname === "/destinos";
+
+  const handleLogout = () => {
+    getLogout();
+  };
 
   return (
     <>
-      {!noVisible && (
+      {isVisible && (
         <NavigationMenuStyled className="navigation">
           <NavLink
+            to={"/destinos"}
             className={`navigation__link${
               isActive ? " navigation__link--active" : ""
             } `}
-            to="/destinos"
           >
             <FontAwesomeIcon
               icon={faHouse}
@@ -26,7 +32,11 @@ const NavigationMenu = () => {
             />
             <span className="navigation__text">Destinos</span>
           </NavLink>
-          <NavLink className="navigation__link" to="/login">
+          <NavLink
+            to={"/login"}
+            className="navigation__link"
+            onClick={handleLogout}
+          >
             <FontAwesomeIcon
               icon={faUser}
               className="navigation__icon"

@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import FeedbackModalStyled from "./FeedbackStyled";
 import { useAppDispatch } from "../../store/hooks";
-import { closeModalActionCreator } from "../../store/reducer/uiSlice";
+import { closeFeedbackActionCreator } from "../../store/reducer/uiSlice";
 import Logo from "../Logo/Logo";
 
 interface ModalProps {
@@ -13,7 +13,7 @@ const FeedbackModal = ({ text, type }: ModalProps) => {
   const dispatch = useAppDispatch();
 
   const handleClose = () => {
-    dispatch(closeModalActionCreator());
+    dispatch(closeFeedbackActionCreator());
   };
   return (
     <>

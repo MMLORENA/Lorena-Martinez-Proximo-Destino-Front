@@ -1,13 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TypeModal, IUi } from "../interfaces/interfaces";
+import { TypeModal, IUi, TypeFeedback } from "../interfaces/interfaces";
 
 const uiInitialState: IUi = {
-  isLoged: false,
-  isLoading: false,
   modal: {
-    isOpen: false,
-    text: "",
-    type: "loading",
+    isModalOpen: false,
+    modalText: "",
+    modalType: "loading",
+  },
+  feedback: {
+    isFeedbackOpen: false,
+    feedbackText: "",
+    feedbackType: "welcome",
   },
 };
 
@@ -21,7 +24,18 @@ const uiSlice = createSlice({
     }),
     closingModal: (previousUi: IUi) => ({
       ...previousUi,
-      modal: { ...previousUi.modal, isOpen: false },
+      modal: { ...previousUi.modal, isModalOpen: false },
+    }),
+    openingFeedback: (
+      previousUi: IUi,
+      action: PayloadAction<TypeFeedback>
+    ) => ({
+      ...previousUi,
+      feedback: { ...action.payload },
+    }),
+    closingFeedback: (previousUi: IUi) => ({
+      ...previousUi,
+      feedback: { ...previousUi.feedback, isFeedbackOpen: false },
     }),
   },
 });
@@ -30,4 +44,6 @@ export const UIReducer = uiSlice.reducer;
 export const {
   openingModal: openModalActionCreator,
   closingModal: closeModalActionCreator,
+  openingFeedback: openFeedbackActionCreator,
+  closingFeedback: closeFeedbackActionCreator,
 } = uiSlice.actions;

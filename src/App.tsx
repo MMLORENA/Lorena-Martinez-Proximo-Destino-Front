@@ -11,13 +11,13 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 
 const App = () => {
   const {
-    modal: { isOpen, type, text },
+    modal: { isModalOpen, modalType, modalText },
   } = useAppSelector((state) => state.ui);
 
   return (
     <ThemeProvider theme={styledMainTheme}>
       <AppStyled>
-        {isOpen && <Modal type={type} text={text} />}
+        {isModalOpen && <Modal type={modalType} text={modalText} />}
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<LoginPage />} />

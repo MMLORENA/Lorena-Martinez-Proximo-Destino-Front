@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { closeFeedbackActionCreator } from "../../store/reducer/uiSlice";
 import FeedbackModal from "./FeedbackModal";
 
 const mockDispatch = jest.fn();
@@ -10,10 +10,12 @@ jest.mock("react-redux", () => ({
 
 describe("Given a Feedback component", () => {
   describe("When its instanciated", () => {
-    describe("And receives a type 'welcome' & 'Mar' text", () => {
-      const modalType = "welcome";
-      const modalText = "Mar";
+    afterEach(() => jest.resetAllMocks());
 
+    const modalType = "welcome";
+    const modalText = "Mar";
+
+    describe("And receives a type 'welcome' & 'Mar' text", () => {
       test("Then it should show '¡Hola! Mar' as text", () => {
         const expectedText = "¡Hola!";
         render(<FeedbackModal type={modalType} text={modalText} />);
@@ -45,37 +47,48 @@ describe("Given a Feedback component", () => {
         expect(icon).toBeInTheDocument();
       });
 
+      test("Then after 5000 seconds, the feedback should be close", () => {
+        jest.useFakeTimers();
+
+        render(<FeedbackModal type={modalType} text={modalText} />);
+        jest.advanceTimersByTime(5000);
+
+        expect(mockDispatch).toHaveBeenCalledWith(closeFeedbackActionCreator());
+      });
+    });
+
+    describe("And the user clicks on the cross icon", () => {
       test("Then it should close the feedback", async () => {
         const iconId = "icon-cross";
 
         render(<FeedbackModal type={modalType} text={modalText} />);
 
         const icon = screen.getByTestId(iconId);
-        await userEvent.click(icon);
+        await fireEvent.click(icon);
 
         expect(mockDispatch).toHaveBeenCalled();
       });
-    });
 
-    describe("And receives a type 'message' & 'ha sido creado' as text", () => {
-      const modalType = "message";
-      const modalText = "ha sido creado";
+      describe("And receives a type 'message' & 'ha sido creado' as text", () => {
+        const modalType = "message";
+        const modalText = "ha sido creado";
 
-      test("Then it should show 'ha sido creado' as text inside", () => {
-        render(<FeedbackModal type={modalType} text={modalText} />);
+        test("Then it should show 'ha sido creado' as text inside", () => {
+          render(<FeedbackModal type={modalType} text={modalText} />);
 
-        const text = screen.getByText(modalText);
+          const text = screen.getByText(modalText);
 
-        expect(text).toBeInTheDocument();
-      });
+          expect(text).toBeInTheDocument();
+        });
 
-      test("Then it should show the 'próximo Destino' logo inside with alt text 'logo próximo destino", () => {
-        const expectAltText = "logo próximo destino";
-        render(<FeedbackModal type={modalType} text={modalText} />);
+        test("Then it should show the 'próximo Destino' logo inside with alt text 'logo próximo destino", () => {
+          const expectAltText = "logo próximo destino";
+          render(<FeedbackModal type={modalType} text={modalText} />);
 
-        const image = screen.getByAltText(expectAltText);
+          const image = screen.getByAltText(expectAltText);
 
-        expect(image).toBeInTheDocument();
+          expect(image).toBeInTheDocument();
+        });
       });
     });
   });

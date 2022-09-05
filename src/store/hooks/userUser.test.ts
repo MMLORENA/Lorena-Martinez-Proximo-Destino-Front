@@ -5,7 +5,10 @@ import {
   openFeedbackActionCreator,
   openModalActionCreator,
 } from "../reducer/uiSlice";
-import { loginUserActionCreator } from "../reducer/userSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../reducer/userSlice";
 import useUser from "./useUser";
 import * as router from "react-router";
 
@@ -129,6 +132,32 @@ describe("Given a function getLogin inside useUser hook", () => {
       expect(mockDispatch).toHaveBeenCalledWith(
         openModalActionCreator(mockErrorModal)
       );
+    });
+  });
+});
+
+describe("Given a function getLogout inside useUser hook", () => {
+  describe("When it's invoke", () => {
+    test("Then it should invoke the dispatch with 'logoutUserActionCreator'", async () => {
+      const { result } = renderHook(() => useUser(), { wrapper: Wrapper });
+
+      await result.current.getLogout();
+
+      expect(mockDispatch).toHaveBeenCalledWith(logoutUserActionCreator());
+    });
+
+    test("Then localStorage with removeItem method to have been called with key 'token'", async () => {
+      jest.spyOn(Storage.prototype, "removeItem");
+      Storage.prototype.removeItem = jest.fn();
+      const localStorageKey = "token";
+
+      const { result } = renderHook(() => useUser(), {
+        wrapper: Wrapper,
+      });
+
+      await result.current.getLogout();
+
+      expect(localStorage.removeItem).toHaveBeenCalledWith(localStorageKey);
     });
   });
 });

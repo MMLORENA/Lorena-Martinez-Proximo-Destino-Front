@@ -13,7 +13,7 @@ const PageNotFoundStyled = styled.div`
   .image-container {
     min-width: 200px;
     height: 250px;
-    background-image: url("./images/pageNotFound.webp");
+    background-image: url("./images/pageNotFoundMbl.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -26,6 +26,7 @@ const PageNotFoundStyled = styled.div`
       height: 100vh;
       flex: 2;
       background-size: cover;
+      background-image: url("./images/pageNotFound.webp");
       background-repeat: repeat;
       display: flex;
       flex-direction: row-reverse;

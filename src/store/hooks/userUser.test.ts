@@ -80,11 +80,11 @@ describe("Given a function getLogin inside useUser hook", () => {
   });
 
   describe("When it's invoke with an invalid user", () => {
-    test("Then dispatch has been called with openModal action with message 'Usuario o contraseña incorrecta'", async () => {
+    test("Then dispatch has been called with openModal action with message 'Usuario o contraseña no válidos'", async () => {
       const mockErrorModal: Modal = {
-        text: "Usuario o Contraseña no válidos",
-        type: "error",
-        isOpen: true,
+        modalText: "Usuario o Contraseña no válidos",
+        modalType: "error",
+        isModalOpen: true,
       };
 
       const { result } = renderHook(() => useUser(), {

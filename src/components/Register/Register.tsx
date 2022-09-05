@@ -23,9 +23,9 @@ const Register = () => {
 
   const modalError: Modal = {
     ...modal,
-    isOpen: true,
-    text: "Error al registrarte",
-    type: "error",
+    isModalOpen: true,
+    modalText: "Error al registrarte",
+    modalType: "error",
   };
 
   const [registerData, setRegisterData] = useState(initialUser);

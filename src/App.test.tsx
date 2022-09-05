@@ -5,12 +5,10 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 
 const mockSelectorReturn = {
-  isLoged: false,
-  isLoading: false,
   modal: {
-    isOpen: true,
-    text: "Algo ha ido mal",
-    type: "error",
+    isModalOpen: true,
+    modalText: "Algo ha ido mal",
+    modalType: "error",
   },
 };
 
@@ -20,7 +18,7 @@ jest.mock("react-redux", () => ({
 }));
 
 describe("Given an App component", () => {
-  describe("When isOpen is true", () => {
+  describe("When isModalOpen is true", () => {
     test("Then it should render the modal component", () => {
       render(
         <Provider store={store}>

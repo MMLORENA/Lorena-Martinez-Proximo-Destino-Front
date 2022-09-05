@@ -31,23 +31,6 @@ describe("Given a PageNotFound component", () => {
   });
 
   describe("And the user clicks on the button", () => {
-    test("Then it shoul redirect to 'Registro' page", async () => {
-      const expectedText = "Volver";
-      render(
-        <>
-          <Provider store={store}>
-            <MemoryRouter>
-              <PageNotFound />
-            </MemoryRouter>
-          </Provider>
-        </>
-      );
-      const button = screen.getByRole("button", { name: expectedText });
-      await userEvent.click(button);
-
-      expect(mockNavigate).toHaveBeenCalled();
-    });
-
     test("Then should change the page", async () => {
       render(
         <>

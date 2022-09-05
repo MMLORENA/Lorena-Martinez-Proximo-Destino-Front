@@ -1,9 +1,19 @@
 import { renderHook } from "@testing-library/react";
 import Wrapper from "../../test-utils/Wrapper";
-import { Modal } from "../interfaces/interfaces";
-import { openModalActionCreator } from "../reducer/uiSlice";
+import { Feedback, Modal } from "../interfaces/interfaces";
+import {
+  openFeedbackActionCreator,
+  openModalActionCreator,
+} from "../reducer/uiSlice";
 import { loginUserActionCreator } from "../reducer/userSlice";
 import useUser from "./useUser";
+import * as router from "react-router";
+
+const mockNavigate = jest.fn();
+
+beforeEach(() => {
+  jest.spyOn(router, "useNavigate").mockImplementation(() => mockNavigate);
+});
 
 const mockDispatch = jest.fn();
 
@@ -68,13 +78,36 @@ describe("Given a function getLogin inside useUser hook", () => {
     password: "Admin",
   };
   describe("When it's invoke with a valid user", () => {
-    test("Then it should dispatch a user correctly loged", async () => {
+    test("Then it should dispatch a user correctly loged adn call dispatch", async () => {
       const { result } = renderHook(useUser, { wrapper: Wrapper });
 
       await result.current.getLogin(mockUser);
 
       expect(mockDispatch).toHaveBeenCalledWith(
         loginUserActionCreator(mockDataToken.userName)
+      );
+    });
+
+    test("Then should change the page to '/destinos'", async () => {
+      const { result } = renderHook(useUser, { wrapper: Wrapper });
+
+      await result.current.getLogin(mockUser);
+
+      expect(mockNavigate).toHaveBeenCalledWith("/destinos");
+    });
+
+    test("Then should invoke the dispatch with openFeedbackActionCreator", async () => {
+      const mockFeedaback: Feedback = {
+        isFeedbackOpen: true,
+        feedbackText: `${mockUser.userName}`,
+        feedbackType: "welcome",
+      };
+      const { result } = renderHook(useUser, { wrapper: Wrapper });
+
+      await result.current.getLogin(mockUser);
+
+      expect(mockDispatch).toHaveBeenCalledWith(
+        openFeedbackActionCreator(mockFeedaback)
       );
     });
   });

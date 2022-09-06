@@ -56,7 +56,7 @@ const useUser = () => {
       const userLoged = decodeToken(token);
 
       dispatch(loginUserActionCreator(userLoged.userName));
-      localStorage.setItem("token", JSON.stringify({ token: token }));
+      localStorage.setItem("token", userLoged.token);
 
       const feedbackLogin: Feedback = {
         ...feedback,

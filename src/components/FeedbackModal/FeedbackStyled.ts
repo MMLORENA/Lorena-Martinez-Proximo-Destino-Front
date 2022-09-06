@@ -12,6 +12,8 @@ const FeedbackModalStyled = styled.div`
   .feedback__container {
     background-color: ${(props) => props.theme.forthColor};
     border: 4px ${(props) => props.theme.correctColor} solid;
+    min-width: 18rem;
+    min-height: 16rem;
     border-radius: 20px;
     display: flex;
     justify-content: center;

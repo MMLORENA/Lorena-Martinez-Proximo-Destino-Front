@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { closeModalActionCreator } from "../../store/reducer/uiSlice";
 import Modal from "./Modal";
 
 const mockDispatch = jest.fn();
@@ -50,9 +50,18 @@ describe("Given a Modal component", () => {
         render(<Modal type={modalType} text={modalText}></Modal>);
 
         const icon = screen.getByTestId(iconId);
-        await userEvent.click(icon);
+        await fireEvent.click(icon);
 
         expect(mockDispatch).toHaveBeenCalled();
+      });
+
+      test("Then after 5000 seconds, the feedback should be close", () => {
+        jest.useFakeTimers();
+
+        render(<Modal type={modalType} text={modalText} />);
+        jest.advanceTimersByTime(5000);
+
+        expect(mockDispatch).toHaveBeenCalledWith(closeModalActionCreator());
       });
     });
   });

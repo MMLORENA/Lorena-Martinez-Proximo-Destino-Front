@@ -3,6 +3,7 @@ import { faPlaneSlash, faXmark } from "@fortawesome/free-solid-svg-icons";
 import ModalStyled from "./ModalStyled";
 import { useAppDispatch } from "../../store/hooks";
 import { closeModalActionCreator } from "../../store/reducer/uiSlice";
+import { useCallback, useEffect } from "react";
 
 interface ModalProps {
   text: string;
@@ -11,9 +12,19 @@ interface ModalProps {
 const Modal = ({ text, type }: ModalProps) => {
   const dispatch = useAppDispatch();
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     dispatch(closeModalActionCreator());
-  };
+  }, [dispatch]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleClose();
+    }, 5000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [handleClose]);
+
   return (
     <>
       <ModalStyled className="modal">

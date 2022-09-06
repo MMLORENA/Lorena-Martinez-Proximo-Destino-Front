@@ -35,7 +35,7 @@ jest.mock("../../utils/decodeToken", () => () => mockDataToken);
 describe("Given a function getRegister inside useUser hook", () => {
   describe("When its sends to a valid api url", () => {
     describe("And a correct userData", () => {
-      test("Then it should return true", async () => {
+      test("Then it should return true and redirect to '/login'", async () => {
         const mockUser = {
           name: "Mery",
           firstName: "zas",
@@ -48,6 +48,7 @@ describe("Given a function getRegister inside useUser hook", () => {
 
         const resultRegister = await result.current.getRegister(mockUser);
 
+        expect(mockNavigate).toHaveBeenCalledWith("/login");
         expect(resultRegister).toBe(true);
       });
     });

@@ -31,6 +31,7 @@ const useUser = () => {
       if (response.status !== 201) {
         throw new Error();
       }
+      navigate("/login");
     } catch (error) {
       return false;
     }

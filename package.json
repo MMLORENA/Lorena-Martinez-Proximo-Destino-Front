@@ -66,8 +66,7 @@
       "src/**/*.tsx",
       "src/**/*.ts",
       "!src/index.tsx",
-      "!src/reportWebVitals.ts",
-      "!src/setupTests.ts"
+      "!src/reportWebVitals.ts"
     ]
   }
 }

@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import FeedbackModalStyled from "./FeedbackStyled";
 import { useAppDispatch } from "../../store/hooks";
-import { closeFeedbackActionCreator } from "../../store/reducer/uiSlice";
+import { closeFeedbackActionCreator } from "../../store/reducer/uiSlice/uiSlice";
 import Logo from "../Logo/Logo";
 import { useCallback, useEffect } from "react";
 

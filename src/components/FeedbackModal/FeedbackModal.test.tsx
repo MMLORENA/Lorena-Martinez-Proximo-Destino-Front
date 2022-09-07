@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { closeFeedbackActionCreator } from "../../store/reducer/uiSlice";
+import { closeFeedbackActionCreator } from "../../store/reducer/uiSlice/uiSlice";
 import FeedbackModal from "./FeedbackModal";
 
 const mockDispatch = jest.fn();

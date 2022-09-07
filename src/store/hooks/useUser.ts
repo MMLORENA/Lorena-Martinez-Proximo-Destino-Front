@@ -4,11 +4,11 @@ import decodeToken from "../../utils/decodeToken";
 import {
   loginUserActionCreator,
   logoutUserActionCreator,
-} from "../reducer/userSlice";
+} from "../reducer/userSlice/userSlice";
 import {
   openFeedbackActionCreator,
   openModalActionCreator,
-} from "../reducer/uiSlice";
+} from "../reducer/uiSlice/uiSlice";
 import { Feedback, Modal } from "../interfaces/interfaces";
 import { useNavigate } from "react-router-dom";
 

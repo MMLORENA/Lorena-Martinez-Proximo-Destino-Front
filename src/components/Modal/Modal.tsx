@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlaneSlash, faXmark } from "@fortawesome/free-solid-svg-icons";
 import ModalStyled from "./ModalStyled";
 import { useAppDispatch } from "../../store/hooks";
-import { closeModalActionCreator } from "../../store/reducer/uiSlice";
+import { closeModalActionCreator } from "../../store/reducer/uiSlice/uiSlice";
 import { useCallback, useEffect } from "react";
 
 interface ModalProps {

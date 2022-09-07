@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { closeModalActionCreator } from "../../store/reducer/uiSlice";
+import { closeModalActionCreator } from "../../store/reducer/uiSlice/uiSlice";
 import Modal from "./Modal";
 
 const mockDispatch = jest.fn();

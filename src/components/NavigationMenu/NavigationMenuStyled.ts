@@ -18,13 +18,10 @@ const NavigationMenuStyled = styled.nav`
     background-position: right;
     background-repeat: no-repeat;
     background-size: auto;
-
-    @media (min-width: 850px) {
-      display: flex;
-      justify-content: flex-start;
-      gap: 20px;
-      align-items: center;
-    }
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: center;
   }
 
   .navigation {
@@ -37,10 +34,6 @@ const NavigationMenuStyled = styled.nav`
       gap: 5px;
 
       &--active {
-        color: ${(props) => props.theme.secondaryColor};
-      }
-
-      &:active {
         color: ${(props) => props.theme.secondaryColor};
       }
     }

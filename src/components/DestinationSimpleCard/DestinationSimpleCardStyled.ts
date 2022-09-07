@@ -25,6 +25,13 @@ const DestinationSimpleCardStyled = styled.li`
       border-radius: 20px;
       min-width: 17.5rem;
       min-height: 20rem;
+
+      @media (min-width: 850px) {
+        /* min-height: 17rem;
+        min-width: 14.5rem; */
+        height: 17rem;
+        width: 14.5rem;
+      }
     }
     &__title {
       position: absolute;

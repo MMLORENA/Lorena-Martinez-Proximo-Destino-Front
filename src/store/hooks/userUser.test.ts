@@ -4,11 +4,11 @@ import { Feedback, Modal } from "../interfaces/interfaces";
 import {
   openFeedbackActionCreator,
   openModalActionCreator,
-} from "../reducer/uiSlice";
+} from "../reducer/uiSlice/uiSlice";
 import {
   loginUserActionCreator,
   logoutUserActionCreator,
-} from "../reducer/userSlice";
+} from "../reducer/userSlice/userSlice";
 import useUser from "./useUser";
 import * as router from "react-router";
 

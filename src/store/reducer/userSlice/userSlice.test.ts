@@ -1,4 +1,4 @@
-import { UserState } from "../interfaces/interfaces";
+import { UserState } from "../../interfaces/interfaces";
 import {
   loginUserActionCreator,
   logoutUserActionCreator,

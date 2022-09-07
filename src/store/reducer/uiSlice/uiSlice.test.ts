@@ -1,4 +1,4 @@
-import { Feedback, IUi, Modal } from "../interfaces/interfaces";
+import { Feedback, IUi, Modal } from "../../interfaces/interfaces";
 import {
   closeFeedbackActionCreator,
   closeModalActionCreator,

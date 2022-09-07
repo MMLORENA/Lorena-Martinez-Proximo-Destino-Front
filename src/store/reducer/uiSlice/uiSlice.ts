@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TypeModal, IUi, TypeFeedback } from "../interfaces/interfaces";
+import { TypeModal, IUi, TypeFeedback } from "../../interfaces/interfaces";
 
 const uiInitialState: IUi = {
   modal: {

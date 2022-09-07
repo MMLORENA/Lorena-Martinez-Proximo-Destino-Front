@@ -4,7 +4,7 @@ import useUser from "../../store/hooks/useUser";
 import Button from "../Button/Button";
 import RegisterStyled from "./RegisterStyled";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { openModalActionCreator } from "../../store/reducer/uiSlice";
+import { openModalActionCreator } from "../../store/reducer/uiSlice/uiSlice";
 import { Modal } from "../../store/interfaces/interfaces";
 
 const Register = () => {

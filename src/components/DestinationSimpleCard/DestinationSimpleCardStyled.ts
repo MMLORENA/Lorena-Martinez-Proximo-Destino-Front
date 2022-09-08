@@ -27,8 +27,6 @@ const DestinationSimpleCardStyled = styled.li`
       min-height: 20rem;
 
       @media (min-width: 850px) {
-        /* min-height: 17rem;
-        min-width: 14.5rem; */
         height: 17rem;
         width: 14.5rem;
       }

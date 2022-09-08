@@ -11,6 +11,7 @@ const ModalStyled = styled.div`
   min-width: 300px;
   position: fixed;
   background-color: ${(props) => props.theme.forthColor};
+  z-index: 10;
 
   @media (min-width: 850px) {
     flex-direction: row;
@@ -47,7 +48,7 @@ const ModalStyled = styled.div`
 
       @media (min-width: 850px) {
         font-size: 10rem;
-        top: 20px;
+        top: 120px;
         right: 40px;
         font-size: 3rem;
         cursor: pointer;

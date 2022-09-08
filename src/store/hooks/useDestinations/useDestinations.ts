@@ -10,6 +10,12 @@ const useDestinations = () => {
   const { token } = useAppSelector((state) => state.user);
 
   const getUserDestinations = useCallback(async () => {
+    const loadingModal: Modal = {
+      isModalOpen: true,
+      modalText: "Llegando a tu destino...",
+      modalType: "loading",
+    };
+    dispatch(openModalActionCreator(loadingModal));
     try {
       const response = await fetch(`${urlAPI}destinations/`, {
         headers: { authorization: `Bearer ${token}` },

@@ -63,16 +63,6 @@ describe("Given a Modal component", () => {
 
         expect(icon).toBeInTheDocument();
       });
-
-      test("Then it should show a cross to close the modal", () => {
-        const iconId = "icon-cross";
-
-        render(<Modal type={modalType} text={modalText}></Modal>);
-
-        const icon = screen.getByTestId(iconId);
-
-        expect(icon).toBeInTheDocument();
-      });
     });
 
     describe("And the user clicks on the cross", () => {

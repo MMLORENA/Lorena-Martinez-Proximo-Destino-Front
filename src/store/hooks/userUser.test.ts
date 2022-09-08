@@ -88,7 +88,7 @@ describe("Given a function getLogin inside useUser hook", () => {
       await result.current.getLogin(mockUser);
 
       expect(mockDispatch).toHaveBeenCalledWith(
-        loginUserActionCreator(mockDataToken.userName)
+        loginUserActionCreator(mockDataToken)
       );
     });
 

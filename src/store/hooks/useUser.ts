@@ -56,7 +56,7 @@ const useUser = () => {
       } = await responseData.json();
       const userLoged = decodeToken(token);
 
-      dispatch(loginUserActionCreator(userLoged.userName));
+      dispatch(loginUserActionCreator(userLoged));
       localStorage.setItem("token", userLoged.token);
 
       const feedbackLogin: Feedback = {

@@ -1,4 +1,4 @@
-import { UserState } from "../../interfaces/interfaces";
+import { User, UserState } from "../../models/User";
 import {
   loginUserActionCreator,
   logoutUserActionCreator,
@@ -7,17 +7,31 @@ import {
 
 describe("Given a function userSlice", () => {
   describe("When it's receives an initalState", () => {
-    const initialState: UserState = { isLoged: false, userName: "" };
+    const initialState: UserState = {
+      isLoged: false,
+      userName: "",
+      token: "",
+      id: "",
+    };
 
     describe("And an action 'user/loginUser'", () => {
       test("Then should return a user loged and 'Admin' as userName", () => {
-        const expectedUser = { isLoged: true, userName: "Admin" };
+        const expectedUser = {
+          isLoged: true,
+          userName: "Admin",
+          id: "1",
+          token: "#",
+        };
 
-        const userName = "Admin";
+        const userPayload: User = {
+          userName: "Admin",
+          id: "1",
+          token: "#",
+        };
 
         const userReducerTest = userReducer(
           initialState,
-          loginUserActionCreator(userName)
+          loginUserActionCreator(userPayload)
         );
 
         expect(userReducerTest).toStrictEqual(expectedUser);
@@ -26,7 +40,12 @@ describe("Given a function userSlice", () => {
 
     describe("And an action 'user/logoutUser'", () => {
       test("Then should return a user not loged and an empty userName", () => {
-        const expectedUser = { isLoged: false, userName: "" };
+        const expectedUser = {
+          isLoged: false,
+          userName: "",
+          token: "",
+          id: "",
+        };
 
         const userReducerTest = userReducer(
           initialState,

@@ -17,8 +17,3 @@ export interface Feedback {
 
 export type TypeModal = Modal;
 export type TypeFeedback = Feedback;
-
-export interface UserState {
-  isLoged: boolean;
-  userName: string;
-}

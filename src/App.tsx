@@ -26,6 +26,7 @@ const App = () => {
   return (
     <ThemeProvider theme={styledMainTheme}>
       <AppStyled>
+        <Modal type="loading" text="Llegando a tu destino..." />
         <NavigationMenu />
         {isFeedbackOpen && (
           <FeedbackModal type={feedbackType} text={feedbackText} />

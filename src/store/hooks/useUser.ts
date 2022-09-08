@@ -11,10 +11,7 @@ import {
 } from "../reducer/uiSlice/uiSlice";
 import { Feedback, Modal } from "../interfaces/interfaces";
 import { useNavigate } from "react-router-dom";
-import {
-  loadDestinationsActionCreator,
-  unloadDestinationsActionCreator,
-} from "../reducer/destinationsSlice/destinationsSlice";
+import { unloadDestinationsActionCreator } from "../reducer/destinationsSlice/destinationsSlice";
 
 const useUser = () => {
   const url = process.env.REACT_APP_API_URL as string;

@@ -11,12 +11,17 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import NavigationMenu from "./components/NavigationMenu/NavigationMenu";
 import FeedbackModal from "./components/FeedbackModal/FeedbackModal";
 import DestinationsPage from "./pages/DestinationsPage/DestinationsPage";
+import useToken from "./store/hooks/useToken/useToken";
 
 const App = () => {
   const {
     modal: { isModalOpen, modalType, modalText },
     feedback: { isFeedbackOpen, feedbackText, feedbackType },
   } = useAppSelector((state) => state.ui);
+
+  const { isToken } = useToken();
+
+  isToken();
 
   return (
     <ThemeProvider theme={styledMainTheme}>

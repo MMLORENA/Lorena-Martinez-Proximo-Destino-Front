@@ -11,10 +11,14 @@ const destinationsSlice = createSlice({
       _previousDestinations: Destinations,
       action: PayloadAction<Destinations>
     ) => [...action.payload],
+
+    unloadDestinations: () => destinationsInitialState,
   },
 });
 
 export const destinationsReducer = destinationsSlice.reducer;
 
-export const { loadDestinations: loadDestinationsActionCreator } =
-  destinationsSlice.actions;
+export const {
+  loadDestinations: loadDestinationsActionCreator,
+  unloadDestinations: unloadDestinationsActionCreator,
+} = destinationsSlice.actions;

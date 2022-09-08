@@ -11,6 +11,7 @@ import {
 } from "../reducer/uiSlice/uiSlice";
 import { Feedback, Modal } from "../interfaces/interfaces";
 import { useNavigate } from "react-router-dom";
+import { unloadDestinationsActionCreator } from "../reducer/destinationsSlice/destinationsSlice";
 
 const useUser = () => {
   const url = process.env.REACT_APP_API_URL as string;
@@ -56,7 +57,7 @@ const useUser = () => {
       } = await responseData.json();
       const userLoged = decodeToken(token);
 
-      dispatch(loginUserActionCreator(userLoged.userName));
+      dispatch(loginUserActionCreator(userLoged));
       localStorage.setItem("token", userLoged.token);
 
       const feedbackLogin: Feedback = {
@@ -83,6 +84,7 @@ const useUser = () => {
   const getLogout = () => {
     dispatch(logoutUserActionCreator());
     localStorage.removeItem("token");
+    dispatch(unloadDestinationsActionCreator());
   };
 
   return { getRegister, getLogin, getLogout };

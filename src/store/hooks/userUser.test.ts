@@ -11,6 +11,7 @@ import {
 } from "../reducer/userSlice/userSlice";
 import useUser from "./useUser";
 import * as router from "react-router";
+import { unloadDestinationsActionCreator } from "../reducer/destinationsSlice/destinationsSlice";
 
 const mockNavigate = jest.fn();
 
@@ -32,6 +33,7 @@ const mockDataToken = {
 };
 
 jest.mock("../../utils/decodeToken", () => () => mockDataToken);
+
 describe("Given a function getRegister inside useUser hook", () => {
   describe("When its sends to a valid api url", () => {
     describe("And a correct userData", () => {
@@ -88,7 +90,7 @@ describe("Given a function getLogin inside useUser hook", () => {
       await result.current.getLogin(mockUser);
 
       expect(mockDispatch).toHaveBeenCalledWith(
-        loginUserActionCreator(mockDataToken.userName)
+        loginUserActionCreator(mockDataToken)
       );
     });
 
@@ -159,6 +161,16 @@ describe("Given a function getLogout inside useUser hook", () => {
       await result.current.getLogout();
 
       expect(localStorage.removeItem).toHaveBeenCalledWith(localStorageKey);
+    });
+
+    test("Then it should invoke the dispatch with 'unloadingDestinationsActionCreator'", async () => {
+      const { result } = renderHook(() => useUser(), { wrapper: Wrapper });
+
+      await result.current.getLogout();
+
+      expect(mockDispatch).toHaveBeenCalledWith(
+        unloadDestinationsActionCreator()
+      );
     });
   });
 });

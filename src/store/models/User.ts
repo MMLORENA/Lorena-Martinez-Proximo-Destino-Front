@@ -17,3 +17,6 @@ export interface ProtoUserLogin {
   userName: string;
   password: string;
 }
+export interface UserState extends User {
+  isLoged: boolean;
+}

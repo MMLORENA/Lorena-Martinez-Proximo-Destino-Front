@@ -14,3 +14,9 @@ export interface Destination {
 }
 
 export type Destinations = Destination[];
+
+export interface DestinationSimple {
+  destination: string;
+  image: string;
+  id: string;
+}

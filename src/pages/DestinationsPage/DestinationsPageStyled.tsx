@@ -14,6 +14,9 @@ const DestinationPageStyled = styled.div`
   @media (min-width: 850px) {
     display: flex;
     align-items: flex-start;
+    width: 100%;
+    align-content: flex-start;
+    padding: 0 10px;
     padding-top: 100px;
   }
 

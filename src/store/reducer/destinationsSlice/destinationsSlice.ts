@@ -13,6 +13,13 @@ const destinationsSlice = createSlice({
     ) => [...action.payload],
 
     unloadDestinations: () => destinationsInitialState,
+    deleteDestination: (
+      previousDestinations: Destinations,
+      action: PayloadAction<string>
+    ) =>
+      previousDestinations.filter(
+        (destination) => destination.id !== action.payload
+      ),
   },
 });
 
@@ -21,4 +28,5 @@ export const destinationsReducer = destinationsSlice.reducer;
 export const {
   loadDestinations: loadDestinationsActionCreator,
   unloadDestinations: unloadDestinationsActionCreator,
+  deleteDestination: deleteDestinationActionCreator,
 } = destinationsSlice.actions;

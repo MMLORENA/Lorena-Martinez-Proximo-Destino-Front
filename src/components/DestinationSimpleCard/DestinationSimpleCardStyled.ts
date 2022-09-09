@@ -45,6 +45,10 @@ const DestinationSimpleCardStyled = styled.li`
       right: 15px;
       font-size: 3rem;
       color: ${(props) => props.theme.secondaryColorVariant};
+
+      @media (min-width: 850px) {
+        cursor: pointer;
+      }
     }
   }
 `;

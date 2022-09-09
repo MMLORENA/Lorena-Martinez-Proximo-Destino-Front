@@ -6,7 +6,7 @@ import RegisterPageStyled from "./RegisterPageStyled";
 const RegisterPage = (): JSX.Element => {
   return (
     <>
-      <RegisterPageStyled className="register-page">
+      <RegisterPageStyled>
         <div className="form__image"></div>
         <section className="form-section">
           <div className="form__title-container">

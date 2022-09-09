@@ -10,7 +10,7 @@ const PageNotFound = () => {
   };
   return (
     <>
-      <PageNotFoundStyled className="PageNotFound">
+      <PageNotFoundStyled>
         <div className="image-container">
           <span className="image-text">¡Ups!</span>
           <svg viewBox="0 0 371 356" fill="none" className="icon">

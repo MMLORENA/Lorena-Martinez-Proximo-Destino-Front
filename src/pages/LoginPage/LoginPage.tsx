@@ -6,7 +6,7 @@ import LoginPageStyled from "./LoginPageStyled";
 const LoginPage = (): JSX.Element => {
   return (
     <>
-      <LoginPageStyled className="register-page">
+      <LoginPageStyled>
         <div className="form__image"></div>
         <section className="form-section">
           <div className="form__title-container">

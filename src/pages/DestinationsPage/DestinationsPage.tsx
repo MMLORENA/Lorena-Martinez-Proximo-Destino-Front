@@ -4,7 +4,7 @@ import DestinationPageStyled from "./DestinationsPageStyled";
 
 const DestinationsPage = () => {
   return (
-    <DestinationPageStyled className="DestinationsPage">
+    <DestinationPageStyled>
       <Logo />
       <DestinationsList />
     </DestinationPageStyled>

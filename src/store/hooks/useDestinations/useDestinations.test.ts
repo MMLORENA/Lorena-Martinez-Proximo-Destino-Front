@@ -3,11 +3,21 @@ import { act } from "react-test-renderer";
 import Wrapper from "../../../test-utils/Wrapper";
 import { Modal } from "../../interfaces/interfaces";
 import { Destinations } from "../../models/Destinations";
-import { loadDestinationsActionCreator } from "../../reducer/destinationsSlice/destinationsSlice";
+import {
+  deleteDestinationActionCreator,
+  loadDestinationsActionCreator,
+} from "../../reducer/destinationsSlice/destinationsSlice";
 import { openModalActionCreator } from "../../reducer/uiSlice/uiSlice";
 import useDestinations from "./useDestinations";
 
 let mockToken: string = "token";
+
+const mockError: Modal = {
+  isModalOpen: true,
+  modalText: "!Algo ha salido mal¡",
+  modalType: "error",
+};
+
 const mockUseDispatch = jest.fn();
 const mockUseAppSelector = {
   token: mockToken,
@@ -59,12 +69,6 @@ describe("Given a getUserDestinations in a useDestination hook", () => {
       test("Then it should invoke dispatch with openModalActionCreator with a '¡Algo ha salido mal!' text", async () => {
         mockToken = "";
 
-        const mockError: Modal = {
-          isModalOpen: true,
-          modalText: "!Algo ha salido mal¡",
-          modalType: "error",
-        };
-
         const {
           result: {
             current: { getUserDestinations },
@@ -77,6 +81,40 @@ describe("Given a getUserDestinations in a useDestination hook", () => {
           openModalActionCreator(mockError)
         );
       });
+    });
+  });
+});
+
+describe("Given a deleteDestination", () => {
+  describe("When it's invoke and receives a id of a destination which exist", () => {
+    test("Then it should invoke dispatch with deleteDestinationActionCreator with that list", async () => {
+      const payloadDelete = "1";
+
+      const { result } = renderHook(() => useDestinations(), {
+        wrapper: Wrapper,
+      });
+
+      await result.current.deleteDestinations("1");
+
+      expect(mockUseDispatch).toHaveBeenCalledWith(
+        deleteDestinationActionCreator(payloadDelete)
+      );
+    });
+  });
+
+  describe("When it's invoke and receives a id of a destination which doesn't exist", () => {
+    test("Then it should invoke dispatch with openModalActionCreator", async () => {
+      const payloadDelete = "2";
+
+      const { result } = renderHook(() => useDestinations(), {
+        wrapper: Wrapper,
+      });
+
+      await result.current.deleteDestinations(payloadDelete);
+
+      expect(mockUseDispatch).toHaveBeenCalledWith(
+        openModalActionCreator(mockError)
+      );
     });
   });
 });

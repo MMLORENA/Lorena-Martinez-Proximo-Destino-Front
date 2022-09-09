@@ -1,9 +1,13 @@
 import { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { Modal } from "../../interfaces/interfaces";
-import { loadDestinationsActionCreator } from "../../reducer/destinationsSlice/destinationsSlice";
+import { Feedback, Modal } from "../../interfaces/interfaces";
+import {
+  deleteDestinationActionCreator,
+  loadDestinationsActionCreator,
+} from "../../reducer/destinationsSlice/destinationsSlice";
 import {
   closeModalActionCreator,
+  openFeedbackActionCreator,
   openModalActionCreator,
 } from "../../reducer/uiSlice/uiSlice";
 
@@ -18,7 +22,9 @@ const useDestinations = () => {
       modalText: "Llegando a tu destino...",
       modalType: "loading",
     };
+
     dispatch(openModalActionCreator(loadingModal));
+
     try {
       const response = await fetch(`${urlAPI}destinations/`, {
         headers: { authorization: `Bearer ${token}` },
@@ -29,6 +35,7 @@ const useDestinations = () => {
       }
 
       const { destinations } = await response.json();
+
       dispatch(closeModalActionCreator());
       dispatch(loadDestinationsActionCreator(destinations));
     } catch {
@@ -42,7 +49,42 @@ const useDestinations = () => {
     }
   }, [urlAPI, dispatch, token]);
 
-  return { getUserDestinations };
+  const deleteDestinations = async (idDestination: string) => {
+    try {
+      const feedbackDeleted: Feedback = {
+        feedbackText: "ha sido eliminado",
+        feedbackType: "message",
+        isFeedbackOpen: true,
+      };
+
+      const response = await fetch(
+        `${urlAPI}destinations/delete/${idDestination}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      dispatch(deleteDestinationActionCreator(idDestination));
+      dispatch(openFeedbackActionCreator(feedbackDeleted));
+    } catch {
+      const errorModal: Modal = {
+        isModalOpen: true,
+        modalText: "!Algo ha salido mal¡",
+        modalType: "error",
+      };
+
+      dispatch(openModalActionCreator(errorModal));
+    }
+  };
+  return { getUserDestinations, deleteDestinations };
 };
 
 export default useDestinations;

@@ -18,13 +18,13 @@ const DestinationSimpleCardStyled = styled.li`
       height: 100%;
       position: absolute;
       opacity: 0.3;
-      object-fit: cover;
     }
 
     &__image {
       border-radius: 20px;
       min-width: 17.5rem;
       min-height: 20rem;
+      object-fit: cover;
 
       @media (min-width: 850px) {
         height: 17rem;

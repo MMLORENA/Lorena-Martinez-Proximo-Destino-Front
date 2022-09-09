@@ -46,7 +46,7 @@ describe("Given a PageNotFound component", () => {
 
       await userEvent.click(button);
 
-      expect(mockNavigate).toHaveBeenCalledWith("/login");
+      expect(mockNavigate).toHaveBeenCalledWith("/destinos");
     });
   });
 });

@@ -70,7 +70,7 @@ const LoginStyled = styled.div`
   .form__image {
     width: 100%;
     min-width: 200px;
-    height: 250px;
+    height: 200px;
     background-image: url("./images/loginMbl.webp");
     background-position: center;
     background-repeat: no-repeat;

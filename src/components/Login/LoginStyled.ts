@@ -5,7 +5,7 @@ const LoginStyled = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
 
   @media (min-width: 850px) {
     align-items: center;

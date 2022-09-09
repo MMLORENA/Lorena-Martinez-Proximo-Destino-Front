@@ -2,7 +2,10 @@ import { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { Modal } from "../../interfaces/interfaces";
 import { loadDestinationsActionCreator } from "../../reducer/destinationsSlice/destinationsSlice";
-import { openModalActionCreator } from "../../reducer/uiSlice/uiSlice";
+import {
+  closeModalActionCreator,
+  openModalActionCreator,
+} from "../../reducer/uiSlice/uiSlice";
 
 const useDestinations = () => {
   const urlAPI = process.env.REACT_APP_API_URL;
@@ -26,6 +29,7 @@ const useDestinations = () => {
       }
 
       const { destinations } = await response.json();
+      dispatch(closeModalActionCreator());
       dispatch(loadDestinationsActionCreator(destinations));
     } catch {
       const errorModal: Modal = {

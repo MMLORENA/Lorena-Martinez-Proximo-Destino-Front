@@ -21,6 +21,7 @@ const userSlice = createSlice({
       isLoged: false,
       userName: "",
       token: "",
+      id: "",
     }),
   },
 });

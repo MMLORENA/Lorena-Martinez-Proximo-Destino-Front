@@ -46,4 +46,12 @@ export const handlers = [
   rest.get(`${apiUrl}destinations`, async (req, res, ctx) => {
     return res.once(ctx.status(400));
   }),
+
+  rest.delete(`${apiUrl}destinations/delete/1`, async (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
+
+  rest.delete(`${apiUrl}destinations/delete/2`, async (req, res, ctx) => {
+    return res(ctx.status(400));
+  }),
 ];

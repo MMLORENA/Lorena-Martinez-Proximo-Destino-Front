@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import DestinationSimpleCardStyled from "./DestinationSimpleCardStyled";
+import useDestinations from "../../store/hooks/useDestinations/useDestinations";
 
 interface DestinationSimpleCardProps {
   picture: string;
@@ -13,6 +14,12 @@ const DestinationSimpleCard = ({
   title,
   id,
 }: DestinationSimpleCardProps) => {
+  const { deleteDestinations } = useDestinations();
+
+  const handleDeleteDestination = () => {
+    debugger;
+    deleteDestinations(id);
+  };
   return (
     <DestinationSimpleCardStyled className="destination-simple" key={id}>
       <div className="destination-simple__image-container"></div>
@@ -27,6 +34,7 @@ const DestinationSimpleCard = ({
         icon={faTrashCan}
         className="destination-simple__icon"
         data-testid="icon-trash"
+        onClick={handleDeleteDestination}
       />
       <h2 className="destination-simple__title">{title}</h2>
     </DestinationSimpleCardStyled>

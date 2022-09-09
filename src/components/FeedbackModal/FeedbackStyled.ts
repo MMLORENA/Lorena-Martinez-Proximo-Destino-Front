@@ -42,7 +42,7 @@ const FeedbackModalStyled = styled.div`
   }
 
   .feedback__text {
-    font-size: 2rem;
+    font-size: 1.75rem;
 
     @media (min-width: 850px) {
       font-size: 3rem;

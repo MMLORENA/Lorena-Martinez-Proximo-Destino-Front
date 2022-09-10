@@ -2,8 +2,8 @@ export interface Destination {
   destination: string;
   image: string;
   latitude: number;
-  longitud: number;
-  cateogry: string;
+  longitude: number;
+  category: string;
   firstPlan: string;
   descriptionFirstPlan: string;
   secondPlan?: string;

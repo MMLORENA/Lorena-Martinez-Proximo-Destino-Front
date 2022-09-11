@@ -1,13 +1,17 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { act } from "react-test-renderer";
 import Wrapper from "../../../test-utils/Wrapper";
-import { Modal } from "../../interfaces/interfaces";
-import { Destinations } from "../../models/Destinations";
+import { Feedback, Modal } from "../../interfaces/interfaces";
+import * as router from "react-router";
+import { Destinations, ProtoDestination } from "../../models/Destinations";
 import {
   deleteDestinationActionCreator,
   loadDestinationsActionCreator,
 } from "../../reducer/destinationsSlice/destinationsSlice";
-import { openModalActionCreator } from "../../reducer/uiSlice/uiSlice";
+import {
+  openFeedbackActionCreator,
+  openModalActionCreator,
+} from "../../reducer/uiSlice/uiSlice";
 import useDestinations from "./useDestinations";
 
 let mockToken: string = "token";
@@ -17,6 +21,12 @@ const mockError: Modal = {
   modalText: "!Algo ha salido mal¡",
   modalType: "error",
 };
+
+const mockNavigate = jest.fn();
+
+beforeEach(() => {
+  jest.spyOn(router, "useNavigate").mockImplementation(() => mockNavigate);
+});
 
 const mockUseDispatch = jest.fn();
 const mockUseAppSelector = {
@@ -111,6 +121,65 @@ describe("Given a deleteDestination", () => {
       });
 
       await result.current.deleteDestinations(payloadDelete);
+
+      expect(mockUseDispatch).toHaveBeenCalledWith(
+        openModalActionCreator(mockError)
+      );
+    });
+  });
+});
+
+describe("Given a createDestination", () => {
+  describe("When it's invoke and receives a new Destination form data", () => {
+    test("Then it should invoke dispatch with openFeedbackActionCreator with 'ha sido creado' message and invoke navigate", async () => {
+      const mockProtoDestination: ProtoDestination = {
+        destination: "Roma",
+        category: "",
+        image: "",
+        longitude: 2,
+        latitude: 3,
+        firstPlan: "",
+        descriptionFirstPlan: "",
+      };
+
+      const mockFeedbackCreated: Feedback = {
+        feedbackText: "ha sido creado",
+        feedbackType: "message",
+        isFeedbackOpen: true,
+      };
+
+      const { result } = renderHook(() => useDestinations(), {
+        wrapper: Wrapper,
+      });
+
+      await result.current.createDestination(mockProtoDestination);
+
+      expect(mockUseDispatch).toHaveBeenCalledWith(
+        openFeedbackActionCreator(mockFeedbackCreated)
+      );
+
+      expect(mockNavigate).toHaveBeenCalled();
+    });
+  });
+
+  describe("When it's invoke and receives a destination incomplete of a destination", () => {
+    test("Then it should invoke dispatch with openModalActionCreator and an error message '¡Algo ha salido mal!", async () => {
+      mockToken = "";
+      const mockProtoDestination: ProtoDestination = {
+        destination: "Roma",
+        category: "",
+        image: "",
+        longitude: 2,
+        latitude: 3,
+        firstPlan: "",
+        descriptionFirstPlan: "",
+      };
+
+      const { result } = renderHook(() => useDestinations(), {
+        wrapper: Wrapper,
+      });
+
+      await result.current.createDestination(mockProtoDestination);
 
       expect(mockUseDispatch).toHaveBeenCalledWith(
         openModalActionCreator(mockError)

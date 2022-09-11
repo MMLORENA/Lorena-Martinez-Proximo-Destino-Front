@@ -17,7 +17,6 @@ const DestinationSimpleCard = ({
   const { deleteDestinations } = useDestinations();
 
   const handleDeleteDestination = () => {
-    debugger;
     deleteDestinations(id);
   };
   return (

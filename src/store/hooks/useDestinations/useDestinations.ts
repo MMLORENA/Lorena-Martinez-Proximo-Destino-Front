@@ -1,6 +1,8 @@
 import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { Feedback, Modal } from "../../interfaces/interfaces";
+import { ProtoDestination } from "../../models/Destinations";
 import {
   deleteDestinationActionCreator,
   loadDestinationsActionCreator,
@@ -15,6 +17,7 @@ const useDestinations = () => {
   const urlAPI = process.env.REACT_APP_API_URL;
   const dispatch = useAppDispatch();
   const { token } = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const getUserDestinations = useCallback(async () => {
     const loadingModal: Modal = {
@@ -84,7 +87,41 @@ const useDestinations = () => {
       dispatch(openModalActionCreator(errorModal));
     }
   };
-  return { getUserDestinations, deleteDestinations };
+
+  const createDestination = async (formData: ProtoDestination) => {
+    const feedbackCreated: Feedback = {
+      feedbackText: "ha sido creado",
+      feedbackType: "message",
+      isFeedbackOpen: true,
+    };
+
+    try {
+      const response = await fetch(`${urlAPI}destinations/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data",
+          authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      dispatch(openFeedbackActionCreator(feedbackCreated));
+      navigate("/destinations");
+    } catch {
+      const errorModal: Modal = {
+        isModalOpen: true,
+        modalText: "!Algo ha salido mal¡",
+        modalType: "error",
+      };
+
+      dispatch(openModalActionCreator(errorModal));
+    }
+  };
+  return { getUserDestinations, deleteDestinations, createDestination };
 };
 
 export default useDestinations;

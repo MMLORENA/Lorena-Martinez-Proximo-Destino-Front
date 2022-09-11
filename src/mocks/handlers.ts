@@ -54,4 +54,12 @@ export const handlers = [
   rest.delete(`${apiUrl}destinations/delete/2`, async (req, res, ctx) => {
     return res(ctx.status(400));
   }),
+
+  rest.post(`${apiUrl}destinations/create`, async (req, res, ctx) => {
+    return res.once(ctx.status(200));
+  }),
+
+  rest.post(`${apiUrl}destinations/create`, async (req, res, ctx) => {
+    return res.once(ctx.status(400));
+  }),
 ];

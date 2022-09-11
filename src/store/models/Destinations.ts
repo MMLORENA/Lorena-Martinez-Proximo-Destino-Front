@@ -1,4 +1,16 @@
-export interface Destination {
+export interface Destination extends ProtoDestination {
+  id: string;
+}
+
+export type Destinations = Destination[];
+
+export interface DestinationSimple {
+  destination: string;
+  image: string;
+  id: string;
+}
+
+export interface ProtoDestination {
   destination: string;
   image: string;
   latitude: number;
@@ -9,14 +21,5 @@ export interface Destination {
   secondPlan?: string;
   descriptionSecondPlan?: string;
   thirdPlan?: string;
-  descripctionThirdPlan?: string;
-  id: string;
-}
-
-export type Destinations = Destination[];
-
-export interface DestinationSimple {
-  destination: string;
-  image: string;
-  id: string;
+  descriptionThirdPlan?: string;
 }

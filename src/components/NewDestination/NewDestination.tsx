@@ -26,14 +26,11 @@ const NewDestination = () => {
   const [destinationData, setDestinationData] = useState(initialDestination);
   const [formData, setFormData] = useState(initialformData);
 
-  const handleChangeForm = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDestinationData({
-      ...destinationData,
-      [event.target.id]: event.target.value,
-    });
-  };
-
-  const handleChangeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChangeForm = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
     setDestinationData({
       ...destinationData,
       [event.target.id]: event.target.value,
@@ -142,7 +139,7 @@ const NewDestination = () => {
             name="category"
             id="category"
             className="form-group__input"
-            onChange={handleChangeSelect}
+            onChange={handleChangeForm}
           >
             <option>Playa</option>
             <option>Naturaleza</option>

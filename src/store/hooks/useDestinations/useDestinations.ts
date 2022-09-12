@@ -119,7 +119,36 @@ const useDestinations = () => {
       dispatch(openModalActionCreator(errorModal));
     }
   };
-  return { getUserDestinations, deleteDestinations, createDestination };
+
+  const getByIdDestination = async (idDestination: string) => {
+    try {
+      const response = await fetch(`${urlAPI}destinations/${idDestination}`, {
+        headers: { authorization: `Bearer ${token}` },
+      });
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      const destination = await response.json();
+
+      return destination;
+    } catch (error) {
+      const errorModal: Modal = {
+        isModalOpen: true,
+        modalText: "!Algo ha salido mal¡",
+        modalType: "error",
+      };
+
+      dispatch(openModalActionCreator(errorModal));
+    }
+  };
+  return {
+    getUserDestinations,
+    deleteDestinations,
+    createDestination,
+    getByIdDestination,
+  };
 };
 
 export default useDestinations;

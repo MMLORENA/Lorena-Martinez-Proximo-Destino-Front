@@ -30,15 +30,7 @@ const NewDestination = () => {
     event:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setDestinationData({
-      ...destinationData,
-      [event.target.id]: event.target.value,
-    });
-  };
-
-  const handleChangeTextArea = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setDestinationData({
       ...destinationData,
@@ -172,7 +164,7 @@ const NewDestination = () => {
             value={destinationData.descriptionFirstPlan}
             autoComplete="off"
             className="form-group__input form-group__text-area"
-            onChange={handleChangeTextArea}
+            onChange={handleChangeForm}
           />
         </div>
         <div className="form-group">
@@ -199,7 +191,7 @@ const NewDestination = () => {
             value={destinationData.descriptionSecondPlan}
             autoComplete="off"
             className="form-group__input form-group__text-area"
-            onChange={handleChangeTextArea}
+            onChange={handleChangeForm}
           />
         </div>
         <div className="form-group">
@@ -226,7 +218,7 @@ const NewDestination = () => {
             value={destinationData.descriptionThirdPlan}
             autoComplete="off"
             className="form-group__input form-group__text-area"
-            onChange={handleChangeTextArea}
+            onChange={handleChangeForm}
           />
         </div>
         <div className="form-group">

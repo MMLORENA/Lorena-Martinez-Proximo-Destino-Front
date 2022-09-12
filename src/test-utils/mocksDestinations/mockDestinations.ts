@@ -11,6 +11,7 @@ const destinationsTest: Destinations = [
     firstPlan: "Himalaya",
     descriptionFirstPlan: "trekking",
     id: "63175bcd3349cd8da4ca9dbd",
+    backupImage: "A",
   },
 ];
 

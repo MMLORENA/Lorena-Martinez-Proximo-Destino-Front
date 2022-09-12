@@ -1,17 +1,20 @@
 import { SyntheticEvent, useState } from "react";
+import useDestinations from "../../store/hooks/useDestinations/useDestinations";
 import { ProtoDestination } from "../../store/models/Destinations";
 import Button from "../Button/Button";
 import NewDestinationStyled from "./NewDestinationStyled";
 
 const NewDestination = () => {
-  let formData = new FormData();
+  const { createDestination } = useDestinations();
+
+  const initialformData = new FormData();
 
   const initialDestination: ProtoDestination = {
     destination: "",
-    image: "",
     latitude: 0,
     longitude: 0,
     category: "",
+    image: "",
     firstPlan: "",
     descriptionFirstPlan: "",
     secondPlan: "",
@@ -21,6 +24,7 @@ const NewDestination = () => {
   };
 
   const [destinationData, setDestinationData] = useState(initialDestination);
+  const [formData, setFormData] = useState(initialformData);
 
   const handleChangeForm = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDestinationData({
@@ -46,17 +50,36 @@ const NewDestination = () => {
   };
 
   const handleChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    formData.append("image", event.target.files![0]);
-    setDestinationData({
-      ...destinationData,
-      image: event.target.value,
-    });
+    const file = event.target.files![0];
+    formData.append("image", file);
+    setDestinationData({ ...destinationData, image: event.target.value });
   };
+
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
+    formData.append("destination", destinationData.destination);
+    formData.append("latitude", destinationData.latitude.toString());
+    formData.append("longitude", destinationData.longitude.toString());
+    formData.append("firstPlan", destinationData.firstPlan);
+    formData.append(
+      "descriptionFirstPlan",
+      destinationData.descriptionFirstPlan
+    );
+    formData.append("secondPlan", destinationData.secondPlan!);
+    formData.append(
+      "descriptionSecondPlan",
+      destinationData.descriptionSecondPlan!
+    );
+    formData.append("thirdPlan", destinationData.thirdPlan!);
+    formData.append(
+      "descriptionThirdPlan",
+      destinationData.descriptionThirdPlan!
+    );
+    formData.append("category", destinationData.category);
 
+    createDestination(formData);
     setDestinationData(initialDestination);
-    formData = new FormData();
+    setFormData(initialformData);
   };
 
   const isFormValid = (): boolean =>
@@ -213,13 +236,7 @@ const NewDestination = () => {
           <label className="form-group__label" htmlFor="image">
             Añadir Foto
           </label>
-          <input
-            type="file"
-            id="image"
-            placeholder="image"
-            value={destinationData.image}
-            onChange={handleChangeFile}
-          />
+          <input type="file" id="image" onChange={handleChangeFile} />
         </div>
 
         <Button

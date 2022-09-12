@@ -37,6 +37,7 @@ export const handlers = [
             firstPlan: "Himalaya",
             descriptionFirstPlan: "trekking",
             id: "63175bcd3349cd8da4ca9dbd",
+            backupImage: "a",
           },
         ],
       })

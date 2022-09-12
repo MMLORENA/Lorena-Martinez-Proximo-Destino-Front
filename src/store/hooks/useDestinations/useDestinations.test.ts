@@ -54,6 +54,7 @@ describe("Given a getUserDestinations in a useDestination hook", () => {
             firstPlan: "Himalaya",
             descriptionFirstPlan: "trekking",
             id: "63175bcd3349cd8da4ca9dbd",
+            backupImage: "a",
           },
         ];
 
@@ -132,16 +133,6 @@ describe("Given a deleteDestination", () => {
 describe("Given a createDestination", () => {
   describe("When it's invoke and receives a new Destination form data", () => {
     test("Then it should invoke dispatch with openFeedbackActionCreator with 'ha sido creado' message and invoke navigate", async () => {
-      // const mockProtoDestination: ProtoDestination = {
-      //   destination: "Roma",
-      //   category: "",
-      //   image: "",
-      //   longitude: 2,
-      //   latitude: 3,
-      //   firstPlan: "",
-      //   descriptionFirstPlan: "",
-      // };
-
       const mockFeedbackCreated: Feedback = {
         feedbackText: "ha sido creado",
         feedbackType: "message",
@@ -165,15 +156,6 @@ describe("Given a createDestination", () => {
   describe("When it's invoke and receives a destination incomplete of a destination", () => {
     test("Then it should invoke dispatch with openModalActionCreator and an error message '¡Algo ha salido mal!", async () => {
       mockToken = "";
-      // const mockProtoDestination: ProtoDestination = {
-      //   destination: "Roma",
-      //   category: "",
-      //   image: "",
-      //   longitude: 2,
-      //   latitude: 3,
-      //   firstPlan: "",
-      //   descriptionFirstPlan: "",
-      // };
 
       const { result } = renderHook(() => useDestinations(), {
         wrapper: Wrapper,

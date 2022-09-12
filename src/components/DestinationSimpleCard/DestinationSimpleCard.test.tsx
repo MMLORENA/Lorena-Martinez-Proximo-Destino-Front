@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Wrapper from "../../test-utils/Wrapper";
 import DestinationSimpleCard from "./DestinationSimpleCard";
@@ -24,9 +24,17 @@ describe("Given a DestinationSimpleCard component", () => {
     describe("And receives a title 'Mountain'", () => {
       test("Then it should show 'Mountain' as image heading", () => {
         const expectedText = "Mountain";
-        render(<DestinationSimpleCard id="" picture="" title="Mountain" />, {
-          wrapper: Wrapper,
-        });
+        render(
+          <DestinationSimpleCard
+            id=""
+            picture=""
+            title="Mountain"
+            backup="./Mountain"
+          />,
+          {
+            wrapper: Wrapper,
+          }
+        );
 
         const title = screen.getByRole("heading", { name: expectedText });
 
@@ -36,7 +44,12 @@ describe("Given a DestinationSimpleCard component", () => {
       test("Then it should show a image with an alt text 'Mountain'", () => {
         const expectedText = "Mountain";
         render(
-          <DestinationSimpleCard id="" picture="./Mountain" title="Mountain" />,
+          <DestinationSimpleCard
+            id=""
+            picture="./Mountain"
+            title="Mountain"
+            backup="/Mountain"
+          />,
           {
             wrapper: Wrapper,
           }
@@ -55,6 +68,7 @@ describe("Given a DestinationSimpleCard component", () => {
             id="1"
             picture="./Mountain"
             title="Mountain"
+            backup="./Mountain"
           />,
           {
             wrapper: Wrapper,
@@ -72,7 +86,12 @@ describe("Given a DestinationSimpleCard component", () => {
         const iconId = "icon-trash";
 
         render(
-          <DestinationSimpleCard id="" picture="./Mountain" title="Mountain" />,
+          <DestinationSimpleCard
+            id=""
+            picture="./Mountain"
+            title="Mountain"
+            backup="./Mountain"
+          />,
           {
             wrapper: Wrapper,
           }
@@ -82,6 +101,32 @@ describe("Given a DestinationSimpleCard component", () => {
         await userEvent.click(icon);
 
         expect(mockDelete.deleteDestinations).toHaveBeenCalled();
+      });
+    });
+
+    describe("And original image throw an error", () => {
+      test("Then should show the image backup", () => {
+        const alternativeText = "Mountain";
+
+        render(
+          <DestinationSimpleCard
+            id=""
+            picture="./Mountain"
+            title="Mountain"
+            backup="./Mountain2"
+          />,
+          {
+            wrapper: Wrapper,
+          }
+        );
+
+        const destinationImage = screen.getByRole("img", {
+          name: alternativeText,
+        });
+
+        fireEvent.error(destinationImage);
+
+        expect(destinationImage.getAttribute("src")).toBe("./Mountain2");
       });
     });
   });

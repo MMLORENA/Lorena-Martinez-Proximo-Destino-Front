@@ -1,7 +1,6 @@
 import destinationsTest from "../../../test-utils/mocksDestinations/mockDestinations";
-import { Destination, Destinations } from "../../models/Destinations";
+import { Destinations } from "../../models/Destinations";
 import {
-  createDestinationActionCreator,
   deleteDestinationActionCreator,
   destinationsReducer,
   loadDestinationsActionCreator,
@@ -54,6 +53,7 @@ describe("Given a destinationsSlice", () => {
             firstPlan: "Himalaya",
             descriptionFirstPlan: "trekking",
             id: "63175bcd3349cd8da4ca9dbd",
+            backupImage: "a",
           },
           {
             destination: "Paris",
@@ -64,6 +64,7 @@ describe("Given a destinationsSlice", () => {
             firstPlan: "",
             descriptionFirstPlan: "",
             id: "4",
+            backupImage: "a",
           },
         ];
         const idDeletingDestination = "63175bcd3349cd8da4ca9dbd";
@@ -77,92 +78,13 @@ describe("Given a destinationsSlice", () => {
             firstPlan: "",
             descriptionFirstPlan: "",
             id: "4",
+            backupImage: "a",
           },
         ];
 
         const destinationsSliceState = destinationsReducer(
           previousDestinationsState,
           deleteDestinationActionCreator(idDeletingDestination)
-        );
-
-        expect(destinationsSliceState).toStrictEqual(expectedDestinations);
-      });
-    });
-  });
-
-  describe("And an createDestinationActionCreator", () => {
-    describe("When it's called with destinations list and a new Destination", () => {
-      test("Then should return a destinations list including the new destination", () => {
-        previousDestinationsState = [
-          {
-            destination: "Nepal",
-            image:
-              "https://elviajerofeliz.com/wp-content/uploads/2019/12/Que-ver-en-Nepal-_-10-Lugares-Imprescindibles.jpg",
-            latitude: 200,
-            longitude: 1000,
-            category: "adventure",
-            firstPlan: "Himalaya",
-            descriptionFirstPlan: "trekking",
-            id: "63175bcd3349cd8da4ca9dbd",
-          },
-          {
-            destination: "Paris",
-            image: "",
-            latitude: 200,
-            longitude: 1000,
-            category: "",
-            firstPlan: "",
-            descriptionFirstPlan: "",
-            id: "4",
-          },
-        ];
-        const newDestination: Destination = {
-          destination: "Miami",
-          image: "",
-          latitude: 200,
-          longitude: 1000,
-          category: "",
-          firstPlan: "",
-          descriptionFirstPlan: "",
-          id: "4",
-        };
-        const expectedDestinations: Destinations = [
-          {
-            destination: "Nepal",
-            image:
-              "https://elviajerofeliz.com/wp-content/uploads/2019/12/Que-ver-en-Nepal-_-10-Lugares-Imprescindibles.jpg",
-            latitude: 200,
-            longitude: 1000,
-            category: "adventure",
-            firstPlan: "Himalaya",
-            descriptionFirstPlan: "trekking",
-            id: "63175bcd3349cd8da4ca9dbd",
-          },
-          {
-            destination: "Paris",
-            image: "",
-            latitude: 200,
-            longitude: 1000,
-            category: "",
-            firstPlan: "",
-            descriptionFirstPlan: "",
-            id: "4",
-          },
-          {
-            destination: "Miami",
-            image: "",
-            latitude: 200,
-            longitude: 1000,
-            category: "",
-            firstPlan: "",
-            descriptionFirstPlan: "",
-            id: "4",
-          },
-        ];
-
-        const destinationsSliceState = destinationsReducer(
-          previousDestinationsState,
-          createDestinationActionCreator(newDestination)
         );
 
         expect(destinationsSliceState).toStrictEqual(expectedDestinations);

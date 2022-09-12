@@ -6,6 +6,7 @@ const NewDestinationPageStyled = styled.div`
   align-items: center;
   min-width: 300px;
   width: 100%;
+  padding-bottom: 5em;
 
   @media (min-width: 850px) {
     display: flex;
@@ -13,6 +14,7 @@ const NewDestinationPageStyled = styled.div`
     flex-wrap: wrap;
     align-content: flex-start;
     gap: 20px;
+    padding-top: 5em;
   }
 
   .form-section {

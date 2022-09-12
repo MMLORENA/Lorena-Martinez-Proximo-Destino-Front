@@ -1,4 +1,5 @@
 import Logo from "../../components/Logo/Logo";
+import NavigationMenu from "../../components/NavigationMenu/NavigationMenu";
 import NewDestination from "../../components/NewDestination/NewDestination";
 import NewDestinationPageStyled from "./NewDestinationPageStyled";
 
@@ -14,6 +15,7 @@ const NewDestinationPage = (): JSX.Element => {
           </div>
           <NewDestination />
         </section>
+        <NavigationMenu />
       </NewDestinationPageStyled>
     </>
   );

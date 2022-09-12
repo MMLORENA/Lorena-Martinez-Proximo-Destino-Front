@@ -8,7 +8,10 @@ const NavigationMenu = () => {
   const { pathname } = useLocation();
   const { getLogout } = useUser();
 
-  const isVisible = pathname === "/destinos" || pathname === "/destino";
+  const isVisible =
+    pathname === "/destinos" ||
+    pathname === "/destino" ||
+    pathname === "/crear";
   const isActive = pathname === "/destinos";
 
   const handleLogout = () => {

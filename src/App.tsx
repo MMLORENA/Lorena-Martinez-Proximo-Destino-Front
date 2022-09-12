@@ -12,6 +12,7 @@ import NavigationMenu from "./components/NavigationMenu/NavigationMenu";
 import FeedbackModal from "./components/FeedbackModal/FeedbackModal";
 import DestinationsPage from "./pages/DestinationsPage/DestinationsPage";
 import useToken from "./store/hooks/useToken/useToken";
+import NewDestinationPage from "./pages/newDestinationPage/NewDestinationPage";
 
 const App = () => {
   const {
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registro" element={<RegisterPage />} />
           <Route path="/destinos" element={<DestinationsPage />} />
+          <Route path="/crear" element={<NewDestinationPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AppStyled>

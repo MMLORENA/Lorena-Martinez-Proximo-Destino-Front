@@ -2,7 +2,6 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { Feedback, Modal } from "../../interfaces/interfaces";
-import { ProtoDestination } from "../../models/Destinations";
 import {
   deleteDestinationActionCreator,
   loadDestinationsActionCreator,
@@ -88,7 +87,7 @@ const useDestinations = () => {
     }
   };
 
-  const createDestination = async (formData: ProtoDestination) => {
+  const createDestination = async (formData: FormData) => {
     const feedbackCreated: Feedback = {
       feedbackText: "ha sido creado",
       feedbackType: "message",
@@ -99,10 +98,9 @@ const useDestinations = () => {
       const response = await fetch(`${urlAPI}destinations/create`, {
         method: "POST",
         headers: {
-          "Content-Type": "multipart/form-data",
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(formData),
+        body: formData,
       });
 
       if (!response.ok) {
@@ -110,7 +108,7 @@ const useDestinations = () => {
       }
 
       dispatch(openFeedbackActionCreator(feedbackCreated));
-      navigate("/destinations");
+      navigate("/destinos");
     } catch {
       const errorModal: Modal = {
         isModalOpen: true,

@@ -1,5 +1,16 @@
-export interface Destination extends ProtoDestination {
+export interface Destination {
   id: string;
+  destination: string;
+  image: string;
+  latitude: number;
+  longitude: number;
+  category: string;
+  firstPlan: string;
+  descriptionFirstPlan: string;
+  secondPlan?: string;
+  descriptionSecondPlan?: string;
+  thirdPlan?: string;
+  descriptionThirdPlan?: string;
 }
 
 export type Destinations = Destination[];

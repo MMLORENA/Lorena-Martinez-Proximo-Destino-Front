@@ -3,7 +3,7 @@ import { act } from "react-test-renderer";
 import Wrapper from "../../../test-utils/Wrapper";
 import { Feedback, Modal } from "../../interfaces/interfaces";
 import * as router from "react-router";
-import { Destinations, ProtoDestination } from "../../models/Destinations";
+import { Destinations } from "../../models/Destinations";
 import {
   deleteDestinationActionCreator,
   loadDestinationsActionCreator,
@@ -132,15 +132,15 @@ describe("Given a deleteDestination", () => {
 describe("Given a createDestination", () => {
   describe("When it's invoke and receives a new Destination form data", () => {
     test("Then it should invoke dispatch with openFeedbackActionCreator with 'ha sido creado' message and invoke navigate", async () => {
-      const mockProtoDestination: ProtoDestination = {
-        destination: "Roma",
-        category: "",
-        image: "",
-        longitude: 2,
-        latitude: 3,
-        firstPlan: "",
-        descriptionFirstPlan: "",
-      };
+      // const mockProtoDestination: ProtoDestination = {
+      //   destination: "Roma",
+      //   category: "",
+      //   image: "",
+      //   longitude: 2,
+      //   latitude: 3,
+      //   firstPlan: "",
+      //   descriptionFirstPlan: "",
+      // };
 
       const mockFeedbackCreated: Feedback = {
         feedbackText: "ha sido creado",
@@ -152,7 +152,7 @@ describe("Given a createDestination", () => {
         wrapper: Wrapper,
       });
 
-      await result.current.createDestination(mockProtoDestination);
+      await result.current.createDestination(new FormData());
 
       expect(mockUseDispatch).toHaveBeenCalledWith(
         openFeedbackActionCreator(mockFeedbackCreated)
@@ -165,21 +165,21 @@ describe("Given a createDestination", () => {
   describe("When it's invoke and receives a destination incomplete of a destination", () => {
     test("Then it should invoke dispatch with openModalActionCreator and an error message '¡Algo ha salido mal!", async () => {
       mockToken = "";
-      const mockProtoDestination: ProtoDestination = {
-        destination: "Roma",
-        category: "",
-        image: "",
-        longitude: 2,
-        latitude: 3,
-        firstPlan: "",
-        descriptionFirstPlan: "",
-      };
+      // const mockProtoDestination: ProtoDestination = {
+      //   destination: "Roma",
+      //   category: "",
+      //   image: "",
+      //   longitude: 2,
+      //   latitude: 3,
+      //   firstPlan: "",
+      //   descriptionFirstPlan: "",
+      // };
 
       const { result } = renderHook(() => useDestinations(), {
         wrapper: Wrapper,
       });
 
-      await result.current.createDestination(mockProtoDestination);
+      await result.current.createDestination(new FormData());
 
       expect(mockUseDispatch).toHaveBeenCalledWith(
         openModalActionCreator(mockError)

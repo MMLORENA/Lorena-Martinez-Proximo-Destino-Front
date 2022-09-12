@@ -30,14 +30,17 @@ const DestinationsList = () => {
         </DestinationsListCardStyled>
       ) : (
         <DestinationsListCardStyled>
-          {destinations.map(({ destination, id, image }: DestinationSimple) => (
-            <DestinationSimpleCard
-              key={id}
-              id={id}
-              picture={image}
-              title={destination}
-            />
-          ))}
+          {destinations.map(
+            ({ destination, id, image, backupImage }: DestinationSimple) => (
+              <DestinationSimpleCard
+                key={id}
+                id={id}
+                picture={image}
+                title={destination}
+                backup={backupImage}
+              />
+            )
+          )}
         </DestinationsListCardStyled>
       )}
     </>

@@ -11,6 +11,7 @@ export interface Destination {
   descriptionSecondPlan?: string;
   thirdPlan?: string;
   descriptionThirdPlan?: string;
+  backupImage: string;
 }
 
 export type Destinations = Destination[];
@@ -19,6 +20,7 @@ export interface DestinationSimple {
   destination: string;
   image: string;
   id: string;
+  backupImage: string;
 }
 
 export interface ProtoDestination {

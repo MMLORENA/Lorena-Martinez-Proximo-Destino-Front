@@ -16,7 +16,7 @@ const DestinationPageStyled = styled.div`
     align-items: flex-start;
     width: 100%;
     align-content: flex-start;
-    padding: 0 10px;
+    padding: 0;
     padding-top: 100px;
   }
 

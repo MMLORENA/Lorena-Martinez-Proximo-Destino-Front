@@ -120,29 +120,32 @@ const useDestinations = () => {
     }
   };
 
-  const getByIdDestination = async (idDestination: string) => {
-    try {
-      const response = await fetch(`${urlAPI}destinations/${idDestination}`, {
-        headers: { authorization: `Bearer ${token}` },
-      });
+  const getByIdDestination = useCallback(
+    async (idDestination: string) => {
+      try {
+        const response = await fetch(`${urlAPI}destinations/${idDestination}`, {
+          headers: { authorization: `Bearer ${token}` },
+        });
 
-      if (!response.ok) {
-        throw new Error();
+        if (!response.ok) {
+          throw new Error();
+        }
+
+        const destination = await response.json();
+
+        return destination;
+      } catch (error) {
+        const errorModal: Modal = {
+          isModalOpen: true,
+          modalText: "!Algo ha salido mal¡",
+          modalType: "error",
+        };
+
+        dispatch(openModalActionCreator(errorModal));
       }
-
-      const destination = await response.json();
-
-      return destination;
-    } catch (error) {
-      const errorModal: Modal = {
-        isModalOpen: true,
-        modalText: "!Algo ha salido mal¡",
-        modalType: "error",
-      };
-
-      dispatch(openModalActionCreator(errorModal));
-    }
-  };
+    },
+    [dispatch, token, urlAPI]
+  );
   return {
     getUserDestinations,
     deleteDestinations,

@@ -17,7 +17,7 @@ const DestinationCardStyled = styled.section`
     &__title {
       color: ${(props) => props.theme.secondaryColor};
       font-weight: 700;
-      padding: 20px;
+      padding: 0 20px;
     }
 
     &__title::first-letter {
@@ -65,7 +65,10 @@ const DestinationCardStyled = styled.section`
     &__description {
       overflow: hidden;
       margin: 0;
-      padding: 10px 48px;
+      word-break: break-all;
+      width: 100%;
+      padding: 10px 10px;
+      padding-left: 50px;
     }
   }
 `;

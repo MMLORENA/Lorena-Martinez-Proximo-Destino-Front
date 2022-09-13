@@ -53,7 +53,8 @@ const DestinationDetailPageStyled = styled.div`
       @media (min-width: 850px) {
         align-self: flex-end;
         top: auto;
-        font-size: 7rem;
+        font-size: 6vw;
+        left: 2rem;
       }
     }
 
@@ -62,7 +63,7 @@ const DestinationDetailPageStyled = styled.div`
       bottom: 0;
       border-radius: 18px;
       width: 100%;
-      height: 82px;
+      height: 140px;
       background: linear-gradient(
         0deg,
         rgba(255, 255, 255, 1) 69%,
@@ -87,6 +88,7 @@ const DestinationDetailPageStyled = styled.div`
       align-items: flex-start;
       position: inherit;
       height: 100%;
+      width: 100%;
     }
   }
 `;

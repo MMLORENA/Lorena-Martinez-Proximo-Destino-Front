@@ -1,7 +1,5 @@
 import styled from "styled-components";
 const DestinationCardStyled = styled.section`
-  background-color: ${(props) => props.theme.forthColor};
-  border-radius: 18px;
   min-width: 300px;
 
   .category {

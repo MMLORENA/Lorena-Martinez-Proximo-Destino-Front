@@ -6,6 +6,7 @@ import {
   logoutUserActionCreator,
 } from "../reducer/userSlice/userSlice";
 import {
+  closeModalActionCreator,
   openFeedbackActionCreator,
   openModalActionCreator,
 } from "../reducer/uiSlice/uiSlice";
@@ -20,6 +21,14 @@ const useUser = () => {
   const { modal, feedback } = useAppSelector((state) => state.ui);
 
   const getRegister = async (newUser: UserProto) => {
+    const loadingModal: Modal = {
+      isModalOpen: true,
+      modalText: "Llegando a tu destino...",
+      modalType: "loading",
+    };
+
+    dispatch(openModalActionCreator(loadingModal));
+
     try {
       const response = await fetch(`${url}user/register`, {
         method: "POST",
@@ -32,6 +41,8 @@ const useUser = () => {
       if (response.status !== 201) {
         throw new Error();
       }
+
+      dispatch(closeModalActionCreator());
       navigate("/login");
     } catch (error) {
       return false;
@@ -40,6 +51,14 @@ const useUser = () => {
   };
 
   const getLogin = async (userData: ProtoUserLogin) => {
+    const loadingModal: Modal = {
+      isModalOpen: true,
+      modalText: "Llegando a tu destino...",
+      modalType: "loading",
+    };
+
+    dispatch(openModalActionCreator(loadingModal));
+
     try {
       const responseData = await fetch(`${url}user/login`, {
         method: "POST",
@@ -63,10 +82,11 @@ const useUser = () => {
       const feedbackLogin: Feedback = {
         ...feedback,
         isFeedbackOpen: true,
-        feedbackText: `${userLoged.userName}`,
+        feedbackText: `${userLoged.userName}!`,
         feedbackType: "welcome",
       };
 
+      dispatch(closeModalActionCreator());
       dispatch(openFeedbackActionCreator(feedbackLogin));
       navigate("/destinos");
     } catch (error) {
@@ -82,9 +102,18 @@ const useUser = () => {
   };
 
   const getLogout = () => {
+    const loadingModal: Modal = {
+      isModalOpen: true,
+      modalText: "Llegando a tu destino...",
+      modalType: "loading",
+    };
+
+    dispatch(openModalActionCreator(loadingModal));
+
     dispatch(logoutUserActionCreator());
     localStorage.removeItem("token");
     dispatch(unloadDestinationsActionCreator());
+    dispatch(closeModalActionCreator());
   };
 
   return { getRegister, getLogin, getLogout };

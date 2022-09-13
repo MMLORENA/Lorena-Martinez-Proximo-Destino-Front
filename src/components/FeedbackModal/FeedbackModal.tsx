@@ -37,7 +37,7 @@ const FeedbackModal = ({ text, type }: ModalProps) => {
               data-testid="icon-cross"
               onClick={handleCloseFeedback}
             />
-            <span className="feedback__text">¡Hola!</span>
+            <span className="feedback__text">¡Hola</span>
             <span className="feedback__text">{text}</span>
             <span className="feedback__emoji">🤗</span>
           </div>

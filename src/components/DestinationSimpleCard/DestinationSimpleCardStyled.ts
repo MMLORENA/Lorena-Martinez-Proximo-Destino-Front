@@ -18,6 +18,10 @@ const DestinationSimpleCardStyled = styled.li`
       height: 100%;
       position: absolute;
       opacity: 0.3;
+
+      @media (min-width: 850px) {
+        cursor: pointer;
+      }
     }
 
     &__image {

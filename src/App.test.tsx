@@ -40,7 +40,7 @@ describe("Given an App component", () => {
 
   describe("When isFeedbackOpen is true", () => {
     test("Then it should render the feedback component with a '¡Hola!' text inside", async () => {
-      const expectedSalutation = "¡Hola!";
+      const expectedSalutation = "¡Hola";
       render(
         <Provider store={store}>
           <BrowserRouter>

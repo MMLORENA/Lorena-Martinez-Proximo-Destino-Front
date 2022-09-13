@@ -11,6 +11,7 @@ const DestinationsListCardStyled = styled.ul`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: 0 20px;
   }
 `;
 export default DestinationsListCardStyled;

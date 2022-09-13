@@ -38,9 +38,7 @@ const DestinationDetailPage = () => {
   useEffect(() => {
     (async () => {
       const { destination } = await getByIdDestination(idDestination!);
-      debugger;
       setDestination(destination);
-      debugger;
     })();
   }, [getByIdDestination, idDestination]);
 

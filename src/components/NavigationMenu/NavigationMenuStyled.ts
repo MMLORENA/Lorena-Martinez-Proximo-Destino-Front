@@ -51,6 +51,12 @@ const NavigationMenuStyled = styled.nav`
         display: none;
       }
     }
+
+    &__text:hover {
+      @media (min-width: 850px) {
+        color: ${(props) => props.theme.secondaryColor};
+      }
+    }
   }
 `;
 export default NavigationMenuStyled;

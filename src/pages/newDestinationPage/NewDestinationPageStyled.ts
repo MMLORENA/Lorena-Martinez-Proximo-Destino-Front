@@ -14,7 +14,7 @@ const NewDestinationPageStyled = styled.div`
     flex-wrap: wrap;
     align-content: flex-start;
     gap: 20px;
-    padding-top: 5em;
+    padding-top: 7em;
   }
 
   .form-section {

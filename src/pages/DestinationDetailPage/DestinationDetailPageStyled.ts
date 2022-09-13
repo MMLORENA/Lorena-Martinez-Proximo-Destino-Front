@@ -15,7 +15,7 @@ const DestinationDetailPageStyled = styled.div`
     height: 100%;
     justify-content: flex-end;
     padding-bottom: 0;
-    padding-top: 80px;
+    padding-top: 6rem;
     position: inherit;
   }
 

@@ -16,8 +16,8 @@ describe("Given a Feedback component", () => {
     const modalText = "Mar";
 
     describe("And receives a type 'welcome' & 'Mar' text", () => {
-      test("Then it should show '¡Hola! Mar' as text", () => {
-        const expectedText = "¡Hola!";
+      test("Then it should show '¡Hola Mar' as text", () => {
+        const expectedText = "¡Hola";
         render(<FeedbackModal type={modalType} text={modalText} />);
 
         const name = screen.getByText(modalText);

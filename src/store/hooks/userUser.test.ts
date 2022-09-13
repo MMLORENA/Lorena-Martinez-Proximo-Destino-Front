@@ -105,7 +105,7 @@ describe("Given a function getLogin inside useUser hook", () => {
     test("Then should invoke the dispatch with openFeedbackActionCreator", async () => {
       const mockFeedaback: Feedback = {
         isFeedbackOpen: true,
-        feedbackText: `${mockUser.userName}`,
+        feedbackText: `${mockUser.userName}!`,
         feedbackType: "welcome",
       };
       const { result } = renderHook(useUser, { wrapper: Wrapper });

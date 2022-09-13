@@ -52,6 +52,14 @@ const useDestinations = () => {
   }, [urlAPI, dispatch, token]);
 
   const deleteDestinations = async (idDestination: string) => {
+    const loadingModal: Modal = {
+      isModalOpen: true,
+      modalText: "Llegando a tu destino...",
+      modalType: "loading",
+    };
+
+    dispatch(openModalActionCreator(loadingModal));
+
     try {
       const feedbackDeleted: Feedback = {
         feedbackText: "ha sido eliminado",
@@ -74,6 +82,7 @@ const useDestinations = () => {
         throw new Error();
       }
 
+      dispatch(closeModalActionCreator());
       dispatch(deleteDestinationActionCreator(idDestination));
       dispatch(openFeedbackActionCreator(feedbackDeleted));
     } catch {
@@ -88,12 +97,19 @@ const useDestinations = () => {
   };
 
   const createDestination = async (formData: FormData) => {
+    const loadingModal: Modal = {
+      isModalOpen: true,
+      modalText: "Llegando a tu destino...",
+      modalType: "loading",
+    };
+
     const feedbackCreated: Feedback = {
       feedbackText: "ha sido creado",
       feedbackType: "message",
       isFeedbackOpen: true,
     };
 
+    dispatch(openModalActionCreator(loadingModal));
     try {
       const response = await fetch(`${urlAPI}destinations/create`, {
         method: "POST",
@@ -107,6 +123,7 @@ const useDestinations = () => {
         throw new Error();
       }
 
+      dispatch(closeModalActionCreator());
       dispatch(openFeedbackActionCreator(feedbackCreated));
       navigate("/destinos");
     } catch {
@@ -122,6 +139,14 @@ const useDestinations = () => {
 
   const getByIdDestination = useCallback(
     async (idDestination: string) => {
+      const loadingModal: Modal = {
+        isModalOpen: true,
+        modalText: "Llegando a tu destino...",
+        modalType: "loading",
+      };
+
+      dispatch(openModalActionCreator(loadingModal));
+
       try {
         const response = await fetch(`${urlAPI}destinations/${idDestination}`, {
           headers: { authorization: `Bearer ${token}` },
@@ -133,6 +158,7 @@ const useDestinations = () => {
 
         const destination = await response.json();
 
+        dispatch(closeModalActionCreator());
         return destination;
       } catch (error) {
         const errorModal: Modal = {

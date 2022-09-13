@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import DestinationsList from "../../components/DestinationsList/DestinationsList";
 import Logo from "../../components/Logo/Logo";
+import NavigationMenu from "../../components/NavigationMenu/NavigationMenu";
 import DestinationPageStyled from "./DestinationsPageStyled";
 
 const DestinationsPage = () => {
@@ -22,6 +23,7 @@ const DestinationsPage = () => {
         isDisabled={false}
       />
       <DestinationsList />
+      <NavigationMenu />
     </DestinationPageStyled>
   );
 };

@@ -9,8 +9,7 @@ import DestinationDetailPageStyled from "./DestinationDetailPageStyled";
 
 const DestinationDetailPage = () => {
   const { idDestination } = useParams();
-  const { getByIdDestination } = useDestinations();
-  const { deleteDestinations } = useDestinations();
+  const { getByIdDestination, deleteDestinations } = useDestinations();
 
   const urlAPI = process.env.REACT_APP_API_URL;
 
@@ -39,7 +38,9 @@ const DestinationDetailPage = () => {
   useEffect(() => {
     (async () => {
       const { destination } = await getByIdDestination(idDestination!);
+      debugger;
       setDestination(destination);
+      debugger;
     })();
   }, [getByIdDestination, idDestination]);
 
@@ -52,10 +53,6 @@ const DestinationDetailPage = () => {
           className="main-title__image"
           width={280}
           height={320}
-          onError={({ currentTarget }) => {
-            currentTarget.onerror = null;
-            currentTarget.src = destination.backupImage;
-          }}
         />
         <h1 className="main-title__text">{destination.destination}</h1>
         <div className="main-title__decoration"></div>

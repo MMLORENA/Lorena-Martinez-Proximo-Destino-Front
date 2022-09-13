@@ -213,7 +213,7 @@ const NewDestination = () => {
             Breve descripción plan 3
           </label>
           <textarea
-            id="descriptioThirdPlan"
+            id="descriptionThirdPlan"
             placeholder="Anotaciones"
             value={destinationData.descriptionThirdPlan}
             autoComplete="off"

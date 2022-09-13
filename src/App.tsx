@@ -13,6 +13,7 @@ import FeedbackModal from "./components/FeedbackModal/FeedbackModal";
 import DestinationsPage from "./pages/DestinationsPage/DestinationsPage";
 import useToken from "./store/hooks/useToken/useToken";
 import NewDestinationPage from "./pages/newDestinationPage/NewDestinationPage";
+import DestinationDetailPage from "./pages/DestinationDetailPage/DestinationDetailPage";
 
 const App = () => {
   const {
@@ -38,6 +39,10 @@ const App = () => {
           <Route path="/registro" element={<RegisterPage />} />
           <Route path="/destinos" element={<DestinationsPage />} />
           <Route path="/crear" element={<NewDestinationPage />} />
+          <Route
+            path="/destinos/:idDestination"
+            element={<DestinationDetailPage />}
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AppStyled>

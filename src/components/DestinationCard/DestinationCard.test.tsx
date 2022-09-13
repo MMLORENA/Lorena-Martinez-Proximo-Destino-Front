@@ -10,7 +10,6 @@ describe("Given a DestinationCard component", () => {
       render(
         <DestinationCard
           category="Aventura"
-          categoryIcon="adventure"
           firstPlan=""
           firstPlanDescription=""
         />,
@@ -23,12 +22,11 @@ describe("Given a DestinationCard component", () => {
     });
 
     test("Then should show a image with alt text 'adventure icon'", () => {
-      const expectedText = "Aventura icon";
+      const expectedText = "aventura icon";
 
       render(
         <DestinationCard
-          category="Aventura"
-          categoryIcon="adventure"
+          category="aventura"
           firstPlan=""
           firstPlanDescription=""
         />,
@@ -44,7 +42,6 @@ describe("Given a DestinationCard component", () => {
       render(
         <DestinationCard
           category="Aventura"
-          categoryIcon="adventure"
           firstPlan=""
           firstPlanDescription=""
         />,
@@ -60,7 +57,6 @@ describe("Given a DestinationCard component", () => {
       render(
         <DestinationCard
           category="Aventura"
-          categoryIcon="adventure"
           firstPlan=""
           firstPlanDescription="Trekking"
         />,
@@ -78,7 +74,6 @@ describe("Given a DestinationCard component", () => {
       render(
         <DestinationCard
           category="Aventura"
-          categoryIcon="adventure"
           firstPlan=""
           firstPlanDescription=""
           secondPlan="Running"

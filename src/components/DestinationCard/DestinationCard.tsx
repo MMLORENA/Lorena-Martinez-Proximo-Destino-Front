@@ -3,8 +3,7 @@ import { faMapPin } from "@fortawesome/free-solid-svg-icons";
 import DestinationCardStyled from "./DestinationCardStyled";
 
 interface DestinationCardProps {
-  categoryIcon: "beach" | "nature" | "adventure" | "urban" | "culture";
-  category: "Playa" | "Naturaleza" | "Aventura" | "Urbano" | "Cultura";
+  category: string;
   firstPlan: string;
   firstPlanDescription: string;
   secondPlan?: string;
@@ -14,7 +13,6 @@ interface DestinationCardProps {
 }
 
 const DestinationCard = ({
-  categoryIcon,
   category,
   firstPlan,
   firstPlanDescription,
@@ -28,7 +26,7 @@ const DestinationCard = ({
       <div className="category">
         <h2 className="category__title">{category}</h2>
         <img
-          src={`/images/category-icons/${categoryIcon}.webp`}
+          src={`/images/category-icons/${category}.webp`}
           alt={`${category} icon`}
           className="category__icon"
         />

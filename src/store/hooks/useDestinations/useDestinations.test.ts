@@ -175,16 +175,18 @@ describe("Given a getByIdDestination", () => {
     test("Then it should return the destination", async () => {
       const mockId = "1";
       const mockDestination = {
-        destination: "Nepal",
-        image:
-          "https://elviajerofeliz.com/wp-content/uploads/2019/12/Que-ver-en-Nepal-_-10-Lugares-Imprescindibles.jpg",
-        latitude: 200,
-        longitude: 1000,
-        category: "adventure",
-        firstPlan: "Himalaya",
-        descriptionFirstPlan: "trekking",
-        id: "1",
-        backupImage: "a",
+        destination: {
+          destination: "Nepal",
+          image:
+            "https://elviajerofeliz.com/wp-content/uploads/2019/12/Que-ver-en-Nepal-_-10-Lugares-Imprescindibles.jpg",
+          latitude: 200,
+          longitude: 1000,
+          category: "adventure",
+          firstPlan: "Himalaya",
+          descriptionFirstPlan: "trekking",
+          id: "1",
+          backupImage: "a",
+        },
       };
       const { result } = renderHook(() => useDestinations(), {
         wrapper: Wrapper,

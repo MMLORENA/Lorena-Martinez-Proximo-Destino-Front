@@ -11,8 +11,6 @@ const DestinationDetailPage = () => {
   const { idDestination } = useParams();
   const { getByIdDestination, deleteDestinations } = useDestinations();
 
-  const urlAPI = process.env.REACT_APP_API_URL;
-
   const handleDeleteDestination = () => {
     deleteDestinations(idDestination!);
   };
@@ -46,7 +44,7 @@ const DestinationDetailPage = () => {
     <DestinationDetailPageStyled>
       <section className="main-title">
         <img
-          src={`${urlAPI}${destination.image}`}
+          src={destination.backupImage}
           alt={destination.destination}
           className="main-title__image"
           width={280}
@@ -63,7 +61,7 @@ const DestinationDetailPage = () => {
           firstPlanDescription={destination.descriptionFirstPlan}
           secondPlan={destination.secondPlan}
           secondPlanDescription={destination.descriptionSecondPlan}
-          thirdPlan={destination.descriptionThirdPlan}
+          thirdPlan={destination.thirdPlan}
           thirdPlanDescription={destination.descriptionThirdPlan}
         />
         <Button

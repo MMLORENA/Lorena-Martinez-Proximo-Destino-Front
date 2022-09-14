@@ -3,6 +3,7 @@ import styled from "styled-components";
 const ButtonStyled = styled.div`
   display: flex;
   justify-content: center;
+  width: 100%;
   .button {
     font-size: 1rem;
     align-self: center;

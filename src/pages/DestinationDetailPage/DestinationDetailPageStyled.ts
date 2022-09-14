@@ -47,7 +47,7 @@ const DestinationDetailPageStyled = styled.div`
       padding: 0 20px;
       color: ${(props) => props.theme.forthColor};
       font-size: 4rem;
-      text-shadow: 4px 20px 20px ${(props) => props.theme.primaryColor};
+      text-shadow: 11px 12px 10px ${(props) => props.theme.primaryColor};
       top: 161px;
 
       @media (min-width: 850px) {
@@ -81,10 +81,13 @@ const DestinationDetailPageStyled = styled.div`
     position: absolute;
     top: 288px;
     padding: 20px;
+    padding-bottom: 80px;
 
     @media (min-width: 850px) {
       width: auto;
       display: flex;
+      flex-direction: column;
+      gap: 20px;
       align-items: flex-start;
       position: inherit;
       height: 100%;

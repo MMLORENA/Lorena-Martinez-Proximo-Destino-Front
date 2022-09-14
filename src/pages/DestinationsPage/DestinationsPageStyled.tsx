@@ -27,7 +27,7 @@ const DestinationPageStyled = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-size: contain;
-    width: 100%;
+    width: 90%;
 
     @media (min-width: 850px) {
       display: none;

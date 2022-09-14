@@ -15,8 +15,11 @@ const NavigationMenuStyled = styled.div`
     top: 0;
     height: 10%;
     gap: 20px;
-    align-items: center;
     padding-left: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .logo {
@@ -39,16 +42,19 @@ const NavigationMenuStyled = styled.div`
       gap: 20px;
     }
 
-    &__link {
-      text-decoration: none;
-      color: ${(props) => props.theme.primaryColor};
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
+    &__logo {
+      display: none;
+      cursor: none;
 
-      &--active {
-        color: ${(props) => props.theme.secondaryColor};
+      @media (min-width: 850px) {
+        display: inherit;
+        cursor: pointer;
+      }
+    }
+
+    &__icon {
+      @media (min-width: 850px) {
+        display: none;
       }
     }
 
@@ -60,14 +66,21 @@ const NavigationMenuStyled = styled.div`
       }
     }
 
-    &__icon {
+    &__text:hover {
       @media (min-width: 850px) {
-        display: none;
+        color: ${(props) => props.theme.secondaryColor};
       }
     }
 
-    &__text:hover {
-      @media (min-width: 850px) {
+    &__link {
+      text-decoration: none;
+      color: ${(props) => props.theme.primaryColor};
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+
+      &--active {
         color: ${(props) => props.theme.secondaryColor};
       }
     }

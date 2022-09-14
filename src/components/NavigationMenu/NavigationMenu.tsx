@@ -3,7 +3,7 @@ import { faHouse, faUser } from "@fortawesome/free-solid-svg-icons";
 import NavigationMenuStyled from "./NavigationMenuStyled";
 import { NavLink, useLocation } from "react-router-dom";
 import useUser from "../../store/hooks/useUser";
-import Logo from "../Logo/Logo";
+import { useNavigate } from "react-router-dom";
 
 const NavigationMenu = () => {
   const { pathname } = useLocation();
@@ -13,6 +13,12 @@ const NavigationMenu = () => {
 
   const handleLogout = () => {
     getLogout();
+  };
+
+  const navigate = useNavigate();
+
+  const handleOnClick = () => {
+    navigate("/destinos");
   };
 
   return (
@@ -45,7 +51,12 @@ const NavigationMenu = () => {
             <span className="navigation__text">Logout</span>
           </NavLink>
         </nav>
-        <Logo />
+        <img
+          src="./images/logo-optimizer.svg"
+          alt="logo"
+          className="navigation__logo"
+          onClick={handleOnClick}
+        />
       </NavigationMenuStyled>
     </>
   );

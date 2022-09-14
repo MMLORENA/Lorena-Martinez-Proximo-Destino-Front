@@ -110,6 +110,8 @@ const NewDestination = () => {
             autoComplete="off"
             className="form-group__input"
           />
+        </div>
+        <div className="form-group">
           <label className="form-group__label" htmlFor="longitude">
             Longitud
           </label>
@@ -133,6 +135,7 @@ const NewDestination = () => {
             className="form-group__input"
             onChange={handleChangeForm}
           >
+            <option>Selecciona una categoría</option>
             <option>Playa</option>
             <option>Naturaleza</option>
             <option>Urbano</option>

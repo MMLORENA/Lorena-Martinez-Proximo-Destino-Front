@@ -6,7 +6,7 @@ const PageNotFound = () => {
   const navigation = useNavigate();
 
   const handleOnClick = () => {
-    navigation("/destinos");
+    navigation("/login");
   };
   return (
     <>

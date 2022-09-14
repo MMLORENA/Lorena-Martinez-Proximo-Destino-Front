@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faUser } from "@fortawesome/free-solid-svg-icons";
 import NavigationMenuStyled from "./NavigationMenuStyled";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import useUser from "../../store/hooks/useUser";
-import { useNavigate } from "react-router-dom";
 
 const NavigationMenu = () => {
   const { pathname } = useLocation();

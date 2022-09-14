@@ -41,37 +41,33 @@ const NewDestinationStyled = styled.form`
       width: 100%;
       height: 56px;
       border-radius: 18px;
-      border: 2px solid ${(props) => props.theme.primaryFont};
+      border: 2px #302104 solid;
 
       @media (min-width: 850px) {
         flex: 2;
       }
-    }
 
-    .button {
-      @media (min-width: 850px) {
-        align-self: flex-end;
+      &:focus {
+        font-family: Montserrat, sans-serif;
+        border: 2px #a66908 solid;
+        outline: currentColor none 0px;
       }
     }
+  }
 
-    &__input:focus {
-      font-family: Montserrat, sans-serif;
-      border: 2px solid ${(props) => props.theme.secondaryColor};
+  .button {
+    @media (min-width: 850px) {
+      align-self: flex-end;
     }
   }
 
   textarea {
     border-image: none;
-    border: 2px solid ${(props) => props.theme.primaryFont};
     padding: 17px;
 
     @media (min-width: 850px) {
       padding: 17px 0;
     }
-  }
-
-  input {
-    font-family: inherit;
   }
 `;
 

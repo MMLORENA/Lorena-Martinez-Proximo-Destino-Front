@@ -191,7 +191,7 @@ describe("Given a NavigationMenu Component", () => {
           </MemoryRouter>
         );
 
-        const resultLogo = screen.getByAltText("logo");
+        const resultLogo = screen.getByTestId("navigation__logo");
 
         await userEvent.click(resultLogo);
 

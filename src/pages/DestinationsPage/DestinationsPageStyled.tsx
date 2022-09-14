@@ -21,6 +21,14 @@ const DestinationPageStyled = styled.div`
   }
 
   .icon-logo {
+    margin: 0;
+    background-image: url("./images/logo.svg");
+    background-repeat: repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+
     @media (min-width: 850px) {
       display: none;
     }

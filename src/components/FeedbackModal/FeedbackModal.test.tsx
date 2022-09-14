@@ -1,12 +1,20 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { closeFeedbackActionCreator } from "../../store/reducer/uiSlice/uiSlice";
+import Wrapper from "../../test-utils/Wrapper";
 import FeedbackModal from "./FeedbackModal";
+import * as router from "react-router";
 
 const mockDispatch = jest.fn();
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
   useDispatch: () => mockDispatch,
 }));
+
+const mockNavigate = jest.fn();
+
+beforeEach(() => {
+  jest.spyOn(router, "useNavigate").mockImplementation(() => mockNavigate);
+});
 
 describe("Given a Feedback component", () => {
   describe("When its instanciated", () => {
@@ -74,7 +82,9 @@ describe("Given a Feedback component", () => {
         const modalText = "ha sido creado";
 
         test("Then it should show 'ha sido creado' as text inside", () => {
-          render(<FeedbackModal type={modalType} text={modalText} />);
+          render(<FeedbackModal type={modalType} text={modalText} />, {
+            wrapper: Wrapper,
+          });
 
           const text = screen.getByText(modalText);
 
@@ -82,12 +92,11 @@ describe("Given a Feedback component", () => {
         });
 
         test("Then it should show the 'próximo Destino' logo inside with alt text 'logo próximo destino", () => {
-          const expectAltText = "logo próximo destino";
           render(<FeedbackModal type={modalType} text={modalText} />);
 
-          const image = screen.getByAltText(expectAltText);
+          const logo = screen.getByRole("heading");
 
-          expect(image).toBeInTheDocument();
+          expect(logo).toBeInTheDocument();
         });
       });
     });

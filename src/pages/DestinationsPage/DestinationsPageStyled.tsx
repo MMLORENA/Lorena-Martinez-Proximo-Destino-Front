@@ -20,7 +20,7 @@ const DestinationPageStyled = styled.div`
     padding-top: 100px;
   }
 
-  .logo__img {
+  .icon-logo {
     @media (min-width: 850px) {
       display: none;
     }

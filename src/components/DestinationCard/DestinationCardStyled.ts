@@ -28,6 +28,7 @@ const DestinationCardStyled = styled.section`
 
       @media (min-width: 850px) {
         padding: 0;
+        padding-left: 20px;
       }
     }
   }
@@ -63,7 +64,6 @@ const DestinationCardStyled = styled.section`
     &__description {
       overflow: hidden;
       margin: 0;
-      word-break: break-all;
       width: 100%;
       padding: 10px 10px;
       padding-left: 50px;

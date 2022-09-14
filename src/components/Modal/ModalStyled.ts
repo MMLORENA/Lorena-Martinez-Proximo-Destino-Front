@@ -11,20 +11,43 @@ const ModalStyled = styled.div`
   min-width: 300px;
   position: fixed;
   background-color: ${(props) => props.theme.forthColor};
-  z-index: 10;
+  z-index: 8;
 
   @media (min-width: 850px) {
     flex-direction: row;
-    gap: 40px;
+    gap: 45px;
     width: 100%;
   }
 
+  .modal-icon-world {
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-radius: 30px;
+  }
+  @-moz-keyframes spin {
+    100% {
+      -moz-transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
   .modal {
     &__text {
       font-size: 2rem;
       font-weight: bold;
       color: ${(props) => props.theme.primaryColor};
       text-align: center;
+      z-index: 10;
 
       @media (min-width: 850px) {
         font-size: 3rem;

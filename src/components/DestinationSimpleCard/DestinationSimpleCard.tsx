@@ -20,8 +20,6 @@ const DestinationSimpleCard = ({
   const { deleteDestinations } = useDestinations();
   const navigate = useNavigate();
 
-  const urlAPI = process.env.REACT_APP_API_URL;
-
   const handleDeleteDestination = () => {
     deleteDestinations(id);
   };
@@ -38,15 +36,11 @@ const DestinationSimpleCard = ({
       ></div>
 
       <img
-        src={`${urlAPI}${picture}`}
+        src={backup}
         alt={title}
         className="destination-simple__image"
         width={280}
         height={320}
-        onError={({ currentTarget }) => {
-          currentTarget.onerror = null;
-          currentTarget.src = backup;
-        }}
       />
       <FontAwesomeIcon
         icon={faTrashCan}

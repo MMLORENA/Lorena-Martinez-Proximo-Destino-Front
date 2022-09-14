@@ -170,5 +170,34 @@ describe("Given a NavigationMenu Component", () => {
         });
       });
     });
+
+    describe("And the user clicks on the 'Logo'", () => {
+      test("Then should change page to '/destinations'", async () => {
+        const mockLocation = {
+          pathname: "/destinos",
+          Location: "",
+          key: "",
+          search: "",
+          hash: "",
+          state: "",
+        };
+
+        jest
+          .spyOn(router, "useLocation")
+          .mockImplementation(() => mockLocation);
+
+        render(
+          <MemoryRouter initialEntries={["/destinos"]}>
+            <NavigationMenu />
+          </MemoryRouter>
+        );
+
+        const resultLogo = screen.getByAltText("logo");
+
+        await userEvent.click(resultLogo);
+
+        expect(mockNavigate).toHaveBeenCalled();
+      });
+    });
   });
 });

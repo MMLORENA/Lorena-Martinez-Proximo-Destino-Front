@@ -22,6 +22,10 @@ const DestinationSimpleCardStyled = styled.li`
       @media (min-width: 850px) {
         cursor: pointer;
       }
+
+      &:hover {
+        background-color: ${(props) => props.theme.secondaryColor};
+      }
     }
 
     &__image {
@@ -41,6 +45,10 @@ const DestinationSimpleCardStyled = styled.li`
       color: ${(props) => props.theme.forthColor};
       font-size: 2.5rem;
       text-shadow: 8px 10px 28px ${(props) => props.theme.primaryColor};
+
+      @media (min-width: 850px) {
+        cursor: pointer;
+      }
     }
 
     &__icon {

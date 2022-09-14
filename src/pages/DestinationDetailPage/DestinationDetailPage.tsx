@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import DestinationCard from "../../components/DestinationCard/DestinationCard";
 import useDestinations from "../../store/hooks/useDestinations/useDestinations";
@@ -10,9 +10,11 @@ import DestinationDetailPageStyled from "./DestinationDetailPageStyled";
 const DestinationDetailPage = () => {
   const { idDestination } = useParams();
   const { getByIdDestination, deleteDestinations } = useDestinations();
+  const navigate = useNavigate();
 
   const handleDeleteDestination = () => {
     deleteDestinations(idDestination!);
+    navigate("/destinos");
   };
 
   const initialDestination: Destination = {

@@ -3,10 +3,9 @@ import Wrapper from "../../test-utils/Wrapper";
 import NavigationMenu from "./NavigationMenu";
 import * as router from "react-router";
 import { Provider } from "react-redux";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, useLocation } from "react-router-dom";
 import { store } from "../../store/store";
 import userEvent from "@testing-library/user-event";
-import { useLocation } from "react-router-dom";
 
 const mockLogout = jest.fn();
 

@@ -32,11 +32,12 @@ const RegisterStyled = styled.div`
 
     @media (min-width: 850px) {
       display: flex;
-      align-content: flex-start;
-      flex-direction: column-reverse;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding: 30px 0;
+      flex-direction: row-reverse;
+      flex-wrap: no-wrap;
+      align-items: flex-start;
+      gap: 20px;
+      justify-content: space-around;
+      align-content: center;
     }
   }
 
@@ -61,9 +62,8 @@ const RegisterStyled = styled.div`
     margin: 0 auto;
 
     @media (min-width: 850px) {
-      width: 100%;
-      order: 1;
-      padding: 0 60px;
+      padding: 0;
+      margin: 0;
     }
   }
 

@@ -33,11 +33,11 @@ const NewDestinationPageStyled = styled.div`
 
     @media (min-width: 850px) {
       display: flex;
-      flex-direction: row-reverse;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      flex-direction: row;
+      flex-wrap: no-wrap;
       align-items: flex-start;
-      padding: 10px 60px;
+      justify-content: space-around;
+      gap: 20px;
     }
   }
 
@@ -49,8 +49,6 @@ const NewDestinationPageStyled = styled.div`
     margin: 0 auto;
 
     @media (min-width: 850px) {
-      width: 100%;
-      order: 2;
       padding: 0;
       display: block;
     }
@@ -63,7 +61,6 @@ const NewDestinationPageStyled = styled.div`
     margin: 0 auto;
 
     @media (min-width: 850px) {
-      order: 1;
       padding: 0;
       display: block;
       margin: 0;

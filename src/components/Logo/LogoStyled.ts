@@ -5,7 +5,7 @@ const LogoStyled = styled.h1`
   background-image: url("./images/logo-optimizer.svg");
   background-repeat: repeat;
   background-repeat: no-repeat;
-  width: 100%;
+  width: 95%;
   background-position: center;
   background-size: contain;
 

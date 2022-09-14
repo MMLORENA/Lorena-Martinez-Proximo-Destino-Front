@@ -32,12 +32,11 @@ const LoginStyled = styled.div`
 
     @media (min-width: 850px) {
       display: flex;
-      align-content: flex-start;
-      flex-direction: column-reverse;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 20px 0;
+      flex-direction: row-reverse;
+      flex-wrap: no-wrap;
+      align-items: flex-start;
+      justify-content: space-around;
+      gap: 20px;
     }
   }
 
@@ -49,9 +48,7 @@ const LoginStyled = styled.div`
     margin: 0 auto;
 
     @media (min-width: 850px) {
-      width: 100%;
-      order: 2;
-      padding: 0 80px;
+      margin: 0;
     }
   }
 
@@ -62,8 +59,9 @@ const LoginStyled = styled.div`
     margin: 0 auto;
 
     @media (min-width: 850px) {
-      width: 100%;
-      order: 1;
+      white-space: nowrap;
+      padding: 0;
+      margin: 0;
     }
   }
 

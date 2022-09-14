@@ -3,20 +3,19 @@ import styled from "styled-components";
 const LogoStyled = styled.h1`
   margin: 0;
   background-image: url("./images/logo-optimizer.svg");
-  background-image: url("./images/logo-optimizer.svg");
   background-repeat: repeat;
-  background-size: cover;
   background-repeat: no-repeat;
+  width: 100%;
+  background-position: center;
   background-size: contain;
-  width: 90%;
 
   @media (min-width: 850px) {
-    cursor: pointer;
-  }
-
-  .logo {
-    height: auto;
-    width: 100%;
+    background-image: url("./images/logo-optimizer.svg");
+    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 290px;
+    background-position: center;
   }
 `;
 

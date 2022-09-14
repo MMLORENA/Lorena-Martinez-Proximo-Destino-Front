@@ -22,7 +22,7 @@ const DestinationPageStyled = styled.div`
 
   .icon-logo {
     margin: 0;
-    background-image: url("./images/logo.svg");
+    background-image: url("./images/logo-optimizer.svg");
     background-repeat: repeat;
     background-size: cover;
     background-repeat: no-repeat;

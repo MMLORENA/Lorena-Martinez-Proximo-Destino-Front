@@ -11,7 +11,8 @@ const Logo = () => {
   return (
     <>
       <LogoStyled onClick={handleOnClick}>
-        <svg
+        &nbsp;
+        {/* <svg
           width="330"
           height="35"
           viewBox="0 0 330 35"
@@ -8381,7 +8382,7 @@ const Logo = () => {
             d="M151.203 32.0678L151.39 32.2543L151.203 32.0678ZM147.661 32.2543V32.4407H149.712L147.661 32.2543Z"
             fill="#626262"
           />
-        </svg>
+        </svg> */}
       </LogoStyled>
     </>
   );

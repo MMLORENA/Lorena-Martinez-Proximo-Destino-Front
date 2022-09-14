@@ -20,9 +20,9 @@ const App = () => {
     feedback: { isFeedbackOpen, feedbackText, feedbackType },
   } = useAppSelector((state) => state.ui);
 
-  const { isToken } = useToken();
+  const { getToken } = useToken();
 
-  isToken();
+  getToken();
 
   return (
     <ThemeProvider theme={styledMainTheme}>

@@ -27,13 +27,13 @@ describe("Given a getInitialUser function", () => {
 
       const {
         result: {
-          current: { isToken },
+          current: { getToken },
         },
       } = renderHook(() => useToken(), {
         wrapper: Wrapper,
       });
 
-      isToken();
+      getToken();
 
       expect(mockDispatch).toHaveBeenCalled();
     });
@@ -47,13 +47,13 @@ describe("Given a getInitialUser function", () => {
 
       const {
         result: {
-          current: { isToken },
+          current: { getToken },
         },
       } = renderHook(() => useToken(), {
         wrapper: Wrapper,
       });
 
-      isToken();
+      getToken();
 
       expect(mockDispatch).not.toHaveBeenCalled();
     });

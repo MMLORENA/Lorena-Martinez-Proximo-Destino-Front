@@ -134,6 +134,7 @@ const useDestinations = () => {
       };
 
       dispatch(openModalActionCreator(errorModal));
+      navigate("/destinos");
     }
   };
 

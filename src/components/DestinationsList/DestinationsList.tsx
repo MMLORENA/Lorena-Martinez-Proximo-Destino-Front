@@ -21,7 +21,7 @@ const DestinationsList = () => {
         <DestinationsListCardStyled>
           <li className="notDestinations">
             <img
-              src="./images/NotDestinations.png"
+              src="./images/NotDestinations.webp"
               alt="icono mundo con un avión a su alrededor"
               className="notDestinations__image"
             />

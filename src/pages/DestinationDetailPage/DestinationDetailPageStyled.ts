@@ -15,7 +15,7 @@ const DestinationDetailPageStyled = styled.div`
     height: 100%;
     justify-content: flex-end;
     padding-bottom: 0;
-    padding-top: 6rem;
+    padding-top: 80px;
     position: inherit;
   }
 
@@ -46,7 +46,7 @@ const DestinationDetailPageStyled = styled.div`
       margin: 0;
       padding: 0 20px;
       color: ${(props) => props.theme.forthColor};
-      font-size: 4rem;
+      font-size: 3.5rem;
       text-shadow: 11px 12px 10px ${(props) => props.theme.primaryColor};
       top: 161px;
 

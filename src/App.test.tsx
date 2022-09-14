@@ -1,7 +1,8 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import App from "./App";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import TestRenderer from "react-test-renderer";
 import { store } from "./store/store";
 
 const mockSelectorReturn = {
@@ -20,10 +21,11 @@ const mockSelectorReturn = {
 jest.mock("./store/hooks", () => ({
   ...jest.requireActual("./store/hooks"),
   useAppSelector: () => mockSelectorReturn,
+  useAppDispatch: () => jest.fn(),
 }));
 
 describe("Given an App component", () => {
-  describe("When isModalOpen is true", () => {
+  describe("When modal is visible", () => {
     test("Then it should render the modal component with a plane-icon inside", async () => {
       render(
         <Provider store={store}>
@@ -38,7 +40,7 @@ describe("Given an App component", () => {
     });
   });
 
-  describe("When isFeedbackOpen is true", () => {
+  describe("When feedback is true", () => {
     test("Then it should render the feedback component with a '¡Hola!' text inside", async () => {
       const expectedSalutation = "¡Hola";
       render(
@@ -52,6 +54,17 @@ describe("Given an App component", () => {
       const feedbackSalutation = screen.getByText(expectedSalutation);
 
       expect(feedbackSalutation).toHaveTextContent(expectedSalutation);
+    });
+  });
+
+  describe("When it's render", () => {
+    test("Then it shoul render an App Component", () => {
+      const expectedApp = TestRenderer.create(
+        <MemoryRouter initialEntries={["/"]}>
+          <App />
+        </MemoryRouter>
+      );
+      expect(expectedApp).toMatchSnapshot();
     });
   });
 });

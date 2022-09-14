@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import DestinationsList from "../../components/DestinationsList/DestinationsList";
-import Logo from "../../components/Logo/Logo";
 import NavigationMenu from "../../components/NavigationMenu/NavigationMenu";
 import DestinationPageStyled from "./DestinationsPageStyled";
 
@@ -14,7 +13,7 @@ const DestinationsPage = () => {
 
   return (
     <DestinationPageStyled>
-      <Logo />
+      <h1 className="icon-logo">&nbsp;</h1>
       <Button
         classNameTypeButton="small"
         buttonText="Nuevo Destino"

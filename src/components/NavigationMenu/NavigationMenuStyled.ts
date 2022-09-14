@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const NavigationMenuStyled = styled.nav`
+const NavigationMenuStyled = styled.div`
   position: fixed;
   width: 100%;
   background-color: ${(props) => props.theme.forthColor};
@@ -14,17 +14,31 @@ const NavigationMenuStyled = styled.nav`
   @media (min-width: 850px) {
     top: 0;
     height: 10%;
-    background-image: url("./images/logoMbl.webp");
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: auto;
-    display: flex;
-    justify-content: flex-start;
     gap: 20px;
     align-items: center;
+    padding-left: 2rem;
+  }
+
+  .logo {
+    display: none;
+
+    @media (min-width: 850px) {
+      display: flex;
+      align-self: left;
+    }
   }
 
   .navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @media (min-width: 850px) {
+      width: fit-content;
+      display: flex;
+      gap: 20px;
+    }
+
     &__link {
       text-decoration: none;
       color: ${(props) => props.theme.primaryColor};

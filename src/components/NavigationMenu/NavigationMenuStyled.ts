@@ -43,11 +43,15 @@ const NavigationMenuStyled = styled.div`
     }
 
     &__logo {
-      display: none;
-      cursor: none;
-
       @media (min-width: 850px) {
-        display: inherit;
+        background-image: url("./images/logo-optimizer.svg");
+        background-repeat: repeat;
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 290px;
+        background-position: center;
+        height: 1000px;
+
         cursor: pointer;
       }
     }

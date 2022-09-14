@@ -50,12 +50,11 @@ const NavigationMenu = () => {
             <span className="navigation__text">Logout</span>
           </NavLink>
         </nav>
-        <img
-          src="./images/logo-optimizer.svg"
-          alt="logo"
-          className="navigation__logo"
+        <div
           onClick={handleOnClick}
-        />
+          className="navigation__logo"
+          data-testid="navigation__logo"
+        ></div>
       </NavigationMenuStyled>
     </>
   );
